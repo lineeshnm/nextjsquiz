@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <div className='flex-grow' >
 
-      <h1>Home Page</h1>
+      <h1>Exprity Date</h1>
     </div>
   )
 }

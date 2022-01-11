@@ -1,0 +1,129 @@
+[{
+  "_id": {
+    "$oid": "61d95da0dade6673e8715bd3"
+  },
+  "Server": "gbrdsr0001",
+  "DN": "\\\\VED\\Policy\\application\\0",
+  "CN": "315wasadmin1",
+  "KeyStore Location": "/was/fs1",
+  "EP Dependancy": true,
+  "Valid Upto": {
+    "$date": "2022-03-15T18:30:00Z"
+  },
+  "Env": "DRR",
+  "SF Group": "ApaaS~PROD",
+  "ITSI": "BARCLAYS APAAS",
+  "Thumbprint": "fedhyewr"
+},{
+  "_id": {
+    "$oid": "61d95da0dade6673e8715bd4"
+  },
+  "Server": "gbrdsr0002",
+  "DN": "\\\\VED\\Policy\\application\\1",
+  "CN": "315wasadmin2",
+  "KeyStore Location": "/was/fs2",
+  "EP Dependancy": true,
+  "Valid Upto": {
+    "$date": "2022-03-16T18:30:00Z"
+  },
+  "Env": "PRD",
+  "SF Group": "ApaaS~NON~PROD",
+  "ITSI": "BARCLAYS FREEDOM",
+  "Thumbprint": "dfgsd"
+},{
+  "_id": {
+    "$oid": "61d95da0dade6673e8715bd5"
+  },
+  "Server": "gbrdsr0003",
+  "DN": "\\\\VED\\Policy\\application\\2",
+  "CN": "315wasadmin3",
+  "KeyStore Location": "/was/fs3",
+  "EP Dependancy": false,
+  "Valid Upto": {
+    "$date": "2022-03-17T18:30:00Z"
+  },
+  "Env": "DEV",
+  "SF Group": "ApaaS~PROD",
+  "ITSI": "BARCLAYS BCP",
+  "Thumbprint": "fedzxcvdfhyewr"
+},{
+  "_id": {
+    "$oid": "61d95da0dade6673e8715bd6"
+  },
+  "Server": "gbrdsr0004",
+  "DN": "\\\\VED\\Policy\\application\\3",
+  "CN": "315wasadmin4",
+  "KeyStore Location": "/was/fs4",
+  "EP Dependancy": true,
+  "Valid Upto": {
+    "$date": "2022-04-15T18:30:00Z"
+  },
+  "Env": "UAT",
+  "SF Group": "ApaaS~NON~PROD",
+  "ITSI": "BARCLAYS FREEDOM",
+  "Thumbprint": "dsfds"
+},{
+  "_id": {
+    "$oid": "61d95da0dade6673e8715bd7"
+  },
+  "Server": "gbrdsr0005",
+  "DN": "\\\\VED\\Policy\\application\\4",
+  "CN": "315wasadmin5",
+  "KeyStore Location": "/was/fs5",
+  "EP Dependancy": true,
+  "Valid Upto": {
+    "$date": "2022-04-16T18:30:00Z"
+  },
+  "Env": "LAB",
+  "SF Group": "ApaaS~PROD",
+  "ITSI": "BARCLAYS FREEDOM",
+  "Thumbprint": "fdfasf"
+},{
+  "_id": {
+    "$oid": "61d95da0dade6673e8715bd8"
+  },
+  "Server": "gbrdsr0006",
+  "DN": "\\\\VED\\Policy\\application\\5",
+  "CN": "315wasadmin6",
+  "KeyStore Location": "/was/fs6",
+  "EP Dependancy": false,
+  "Valid Upto": {
+    "$date": "2022-04-17T18:30:00Z"
+  },
+  "Env": "DRR",
+  "SF Group": "ApaaS~NON~PROD",
+  "ITSI": "BARCLAYS BCP",
+  "Thumbprint": "cxzvxv"
+},{
+  "_id": {
+    "$oid": "61d95da0dade6673e8715bd9"
+  },
+  "Server": "gbrdsr0007",
+  "DN": "\\\\VED\\Policy\\application\\6",
+  "CN": "315wasadmin7",
+  "KeyStore Location": "/was/fs7",
+  "EP Dependancy": true,
+  "Valid Upto": {
+    "$date": "2022-05-15T18:30:00Z"
+  },
+  "Env": "PRD",
+  "SF Group": "ApaaS~PROD",
+  "ITSI": "BARCLAYS FREEDOM",
+  "Thumbprint": "fedh2434yewr"
+},{
+  "_id": {
+    "$oid": "61d95da0dade6673e8715bda"
+  },
+  "Server": "gbrdsr0008",
+  "DN": "\\\\VED\\Policy\\application\\7",
+  "CN": "315wasadmin8",
+  "KeyStore Location": "/was/fs8",
+  "EP Dependancy": true,
+  "Valid Upto": {
+    "$date": "2022-05-16T18:30:00Z"
+  },
+  "Env": "DEV",
+  "SF Group": "ApaaS~NON~PROD",
+  "ITSI": "BARCLAYS BCP",
+  "Thumbprint": "fedhyffdfewr"
+}]
