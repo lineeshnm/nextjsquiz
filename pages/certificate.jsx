@@ -1,22 +1,19 @@
 import { useState, useEffect } from "react"
-import { GetStaticProps } from 'next'
 import { EnhancedTable } from '../components'
-import { dataForTable } from '../utils'
-import { list } from "postcss"
+import { dataForTable } from '../utils/dbUtils'
 
 const URL = process.env.URL
 
-export default function Home(props) {
-  const [rows, setRows] = useState([
-    {Server: "Server", DN: "DN", CN: "CN", KeyStore_Location: "KeyStore_Location", EP_Dependancy: "EP_Dependancy", Valid_Upto: "Valid_Upto", Env: "Env", SF_Group: "SF_Group", ITSI: "ITSI", Thumbprint: "Thumbprint"}
-  ])
-
-  
+export default function Home({certs}) {
+  const [rows, setRows] = useState([]);
+  // console.log(props.data)
+    
   useEffect(() => {
     let list = []
-    {props.data && props.data.map((row) => {
-      console.log({row})
-      list = [...list, dataForTable(row.Server, row.DN, row.CN, row["KeyStore Location"], row["EP Dependancy"], row["Valid Upto"].$date, row.Env, row["SF Group"], row.ITSI, row.Thumbprint)]
+    // console.log("props.data", props.data)
+    {certs && certs.map((row) => {
+      // console.log({row})
+      list = [...list, dataForTable(row)]
     })}
     setRows(list)
     return () => {
@@ -27,29 +24,28 @@ export default function Home(props) {
   // console.log({rows})
 
   return (
-    <div className='flex-grow' >
-      <div className="text-center text-4xl font-semibold text-white mb-8">
+    <div className='flex-grow px-12' >
+      <div className="text-center text-4xl font-semibold text-white mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
         Certificate List
       </div>
-      <div className="px-24">
-        <EnhancedTable rows={rows} />
-      </div>
+      <EnhancedTable rows={rows} />
     </div>
   )
 }
 
 export const getStaticProps = async (context) => {
 
-  const res = await fetch(`${URL}/data.json`)
+  const res = await fetch(`${URL}/api/certs`)
   const data = await res.json()
   // console.log({data})
-  if (!data) {
+  if (!data.success) {
     return {
       notFound: true,
+      revalidate: 10
     }
   }
   return {
-    props: { data }, // will be passed to the page component as props
+    props: { certs: data.data }, // will be passed to the page component as props
     revalidate: 10
   }
 }

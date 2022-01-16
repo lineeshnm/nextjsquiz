@@ -1,17 +1,14 @@
 import React from 'react'
-import Head from 'next/head'
 import Link from 'next/link'
 
-const navMenuItems = ['Certificate', 'ITSI', 'ExpiryDate']
+const navMenuItems = ['Certificate', 'ToRenew', 'NotToRenew','UpdateDataBase']
 
 const Header = () => {
     return (
-        <>
-        <Head>
-            <title>App Hosting Certificate Portal</title>
-            <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <div className="container mx-auto px-10 mb-8">
+        <div className="flex-grow px-12 lg:flex-row bg-white bg-opacity-10 rounded-3xl overflow-hidden max-w-[95%] shadow-lg m-12"
+        style={{
+        backdropFilter: 'blur(10px)',
+        }}>
             <div className="border-b w-full inline-block border-blue-400 py-8">
                 <div className="md:float-left block">
                 <Link href="/">
@@ -25,7 +22,6 @@ const Header = () => {
                 </div>
             </div>
         </div>
-        </>
     )
 }
 

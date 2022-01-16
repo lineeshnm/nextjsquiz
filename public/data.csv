@@ -1,9 +1,13 @@
-Server,DN,CN,KeyStore Location,EP Dependancy,Valid Upto,Env,SF Group,ITSI,Thumbprint
-gbrdsr0001,\\VED\Policy\application\0,315wasadmin1,/was/fs1,true,3/16/2022,DRR,ApaaS~PROD,BARCLAYS APAAS,fedhyewr
-gbrdsr0002,\\VED\Policy\application\1,315wasadmin2,/was/fs2,true,3/17/2022,PRD,ApaaS~NON~PROD,BARCLAYS FREEDOM,dfgsd
-gbrdsr0003,\\VED\Policy\application\2,315wasadmin3,/was/fs3,false,3/18/2022,DEV,ApaaS~PROD,BARCLAYS BCP,fedzxcvdfhyewr
-gbrdsr0004,\\VED\Policy\application\3,315wasadmin4,/was/fs4,true,4/16/2022,UAT,ApaaS~NON~PROD,BARCLAYS FREEDOM,dsfds
-gbrdsr0005,\\VED\Policy\application\4,315wasadmin5,/was/fs5,true,4/17/2022,LAB,ApaaS~PROD,BARCLAYS FREEDOM,fdfasf
-gbrdsr0006,\\VED\Policy\application\5,315wasadmin6,/was/fs6,false,4/18/2022,DRR,ApaaS~NON~PROD,BARCLAYS BCP,cxzvxv
-gbrdsr0007,\\VED\Policy\application\6,315wasadmin7,/was/fs7,true,5/16/2022,PRD,ApaaS~PROD,BARCLAYS FREEDOM,fedh2434yewr
-gbrdsr0008,\\VED\Policy\application\7,315wasadmin8,/was/fs8,true,5/17/2022,DEV,ApaaS~NON~PROD,BARCLAYS BCP,fedhyffdfewr
+managedDN,commonName,resource,serverName,keyStoreLocation,csrLocation,endPointDependancy,validTo,environment,sfGroup,itServiceInstance,thumbPrint
+gbrdsr00011-wasadmin1,315wasadmin1,Lineesh,gbrpsr00011,/var/chef/log,/var/log/messages,true,2022-03-18T16:00:00.000Z,Prod,APAAS~PROD,Middleware PLATFORM AS A SERVICE,53457437klfjajf435fgjrt
+gbrdsr00012-wasadmin2,15wasadmin2,Datta,gbrdsr00012,/var/chef/log,/var/log/messages,true,2022-03-18T16:00:00.000Z,Prod,APAAS~PROD,Middleware PLATFORM AS A SERVICE,dkfsnawe57543rjw5
+gbrdsr00012\-wasadmin3,215wasadmin3,Datta,gbrdsr00012,/var/chef/log,/var/log/messages,true,2022-03-18T16:00:00.000Z,Prod,APAAS~PROD,Middleware PLATFORM AS A SERVICE,"fjwe8uf34853t,re6t8yrteghty"
+gbrdsr00011-wasadmin3,315wasadmin3,Lineesh,gbrdsr00011,/var/chef/log,/var/log/messages,true,2022-01-18T16:00:00.000Z,Prod,APAAS~PROD,Middleware PLATFORM AS A SERVICE,"fjwe8uf34853t,re6t8yrteghty"
+gbrdsr00013-wasadmin3,315wasadmin3,Aditya,gbrdsr00013,/var/chef/var/log,/var/log/var/messages,true,2022-03-17T16:00:00.000Z,UAT,APAAS~NON~PROD,Middleware PLATFORM AS A SERVICE *UAT,fjwe8uf34853t
+gbrdsr00014-wasadmin3,315wasadmin3,Aditya,gbrdsr00014,/var/chef/var/log,/var/log/var/messages,true,2022-02-17T16:00:00.000Z,UAT,APAAS~NON~PROD,Middleware PLATFORM AS A SERVICE *UAT,fgkj43534lfgsd546
+gbrdsr00015-wasadmin4,315wasadmin4,Joshua,gbrdsr00015,/var/chef/var/log,/var/log/var/messages,true,2022-03-14T16:00:00.000Z,UAT,APAAS~NON~PROD,Middleware PLATFORM AS A SERVICE *UAT,9865mgfdt5968gl54
+gbrdsr00015-wasadmin5,315wasadmin5,Joshua,gbrdsr00015,/var/chef/var/log,/var/log/var/messages,false,2022-03-11T16:00:00.000Z,UAT,APAAS~NON~PROD,Middleware PLATFORM AS A SERVICE *UAT,9865mgfdt5968gl54
+gbrdsr00015-wasadmin6,315wasadmin6,Joshua,gbrdsr00015,/var/chef/var/log,/var/log/var/messages,true,2022-03-10T16:00:00.000Z,UAT,APAAS~NON~PROD,Middleware PLATFORM AS A SERVICE *UAT,w65gfdsgdfty546bgf56
+gbrdsr00016-wasadmin6,315wasadmin6,Harit,gbrdsr00016,/var/chef/var/log,/var/log/var/messages,true,2022-02-10T16:00:00.000Z,DR,APAAS~PROD,Middleware PLATFORM AS A SERVICE *DR,dretrter5654646
+gbrdsr00017-wasadmin6,315wasadmin6,Harit,gbrdsr00017,/var/chef/var/log,/var/log/var/messages,true,2022-02-15T16:00:00.000Z,DR,APAAS~PROD,Middleware PLATFORM AS A SERVICE *DR,49w85gfsdt56
+gbrdsr00018-wasadmin7,315wasadmin7,Harit,gbrdsr00018,/var/chef/var/log,/var/log/var/messages,true,2022-03-15T16:00:00.000Z,DR,APAAS~PROD,Middleware PLATFORM AS A SERVICE *DR,49w85gfsdt56

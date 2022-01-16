@@ -1,0 +1,13 @@
+managedDN,commonName,resource,serverName,keyStoreLocation,csrLocation,endPointDependancy,validTo,environment,sfGroup,itServiceInstance,thumbPrint
+gbrdsr00021-wasadmin1,315wasadmin1,Lineesh,gbrpsr00021,/var/chef/log,/var/log/messages,true,2022-03-18T16:00:00.000Z,Prod,APAAS~PROD,MFT PLATFORM AS A SERVICE,53457437klfj75ekrajf435fgjrt
+gbrdsr00022-wasadmin2,15wasadmin2,Datta,gbrdsr00022,/var/chef/log,/var/log/messages,true,2022-03-18T16:00:00.000Z,Prod,APAAS~PROD,MFT PLATFORM AS A SERVICE,dkfsnafdsfwe57543rjw5
+gbrdsr00022-wasadmin3,215wasadmin3,Datta,gbrdsr00022,/var/chef/log,/var/log/messages,true,2022-03-18T16:00:00.000Z,Prod,APAAS~PROD,MFT PLATFORM AS A SERVICE,"fjwe8uf34853t,re6tfdf8yrteghty"
+gbrdsr00021-wasadmin3,315wasadmin3,Lineesh,gbrdsr00021,/var/chef/log,/var/log/messages,true,2022-01-18T16:00:00.000Z,Prod,APAAS~PROD,MFT PLATFORM AS A SERVICE,"fjwe8uf34853t,re6t8yfdfrteghty"
+gbrdsr00023-wasadmin3,315wasadmin3,Aditya,gbrdsr00023,/var/chef/var/log,/var/log/var/messages,true,2022-03-17T16:00:00.000Z,UAT,APAAS~NON~PROD,MFT PLATFORM AS A SERVICE *UAT,fjwefd8uf34853t
+gbrdsr00024-wasadmin3,315wasadmin3,Aditya,gbrdsr00024,/var/chef/var/log,/var/log/var/messages,true,2022-02-17T16:00:00.000Z,UAT,APAAS~NON~PROD,MFT PLATFORM AS A SERVICE *UAT,fgkj43534fdlfgsd546
+gbrdsr00025-wasadmin4,315wasadmin4,Joshua,gbrdsr00025,/var/chef/var/log,/var/log/var/messages,true,2022-03-14T16:00:00.000Z,UAT,APAAS~NON~PROD,MFT PLATFORM AS A SERVICE *UAT,9865mgfdtfd5968gl54
+gbrdsr00025-wasadmin5,315wasadmin5,Joshua,gbrdsr00025,/var/chef/var/log,/var/log/var/messages,false,2022-03-11T16:00:00.000Z,UAT,APAAS~NON~PROD,MFT PLATFORM AS A SERVICE *UAT,9865mgffddt5968gl54
+gbrdsr00025-wasadmin6,315wasadmin6,Joshua,gbrdsr00025,/var/chef/var/log,/var/log/var/messages,true,2022-03-10T16:00:00.000Z,UAT,APAAS~NON~PROD,MFT PLATFORM AS A SERVICE *UAT,w65gfdsfdgdfty546bgf56
+gbrdsr00026-wasadmin6,315wasadmin6,Harit,gbrdsr00026,/var/chef/var/log,/var/log/var/messages,true,2022-02-10T16:00:00.000Z,DR,APAAS~PROD,MFT PLATFORM AS A SERVICE *DR,dretrter565464fd6
+gbrdsr00027-wasadmin6,315wasadmin6,Harit,gbrdsr00027,/var/chef/var/log,/var/log/var/messages,true,2022-02-15T16:00:00.000Z,DR,APAAS~PROD,MFT PLATFORM AS A SERVICE *DR,49w85gfdfsdt56
+gbrdsr00028-wasadmin7,315wasadmin7,Harit,gbrdsr00028,/var/chef/var/log,/var/log/var/messages,true,2022-03-15T16:00:00.000Z,DR,APAAS~PROD,MFT PLATFORM AS A SERVICE *DR,49w85fdfgfsdt56

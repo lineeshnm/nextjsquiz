@@ -18,35 +18,9 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
-
-// function createData(name, calories, fat, carbs, protein) {
-//   return {
-//     name,
-//     calories,
-//     fat,
-//     carbs,
-//     protein,
-//   };
-// }
-
-// const rows = [
-//   createData('Cupcake', 305, 3.7, 67, 4.3),
-//   createData('Donut', 452, 25.0, 51, 4.9),
-//   createData('Eclair', 262, 16.0, 24, 6.0),
-//   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-//   createData('Gingerbread', 356, 16.0, 49, 3.9),
-//   createData('Honeycomb', 408, 3.2, 87, 6.5),
-//   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-//   createData('Jelly Bean', 375, 0.0, 94, 0.0),
-//   createData('KitKat', 518, 26.0, 65, 7.0),
-//   createData('Lollipop', 392, 0.2, 98, 0.0),
-//   createData('Marshmallow', 318, 0, 81, 2.0),
-//   createData('Nougat', 360, 19.0, 9, 37.0),
-//   createData('Oreo', 437, 18.0, 63, 4.0),
-// ];
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -81,64 +55,76 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: 'Server',
+    id: 'managedDN',
     numeric: false,
     disablePadding: true,
-    label: 'Server',
+    label: 'Managed DN',
   },
   {
-    id: 'DN',
+    id: 'commonName',
     numeric: false,
     disablePadding: false,
-    label: 'DN',
+    label: 'Common Name',
   },
   {
-    id: 'CN',
+    id: 'resource',
     numeric: false,
     disablePadding: false,
-    label: 'CN (Common Name)',
+    label: 'Resource Name',
   },
   {
-    id: 'KeyStore_Location',
+    id: 'serverName',
+    numeric: false,
+    disablePadding: false,
+    label: 'Server Name',
+  },
+  {
+    id: 'keyStoreLocation',
     numeric: false,
     disablePadding: false,
     label: 'KeyStore Location',
   },
   {
-    id: 'EP_Dependancy',
+    id: 'csrLocation',
     numeric: false,
     disablePadding: false,
-    label: 'End Point Deps',
+    label: 'CSR Location',
   },
   {
-    id: 'Valid_Upto',
+    id: 'endPointDependancy',
     numeric: false,
     disablePadding: false,
-    label: 'Valid Up to',
+    label: 'EndPoint Dependancy',
   },
   {
-    id: 'Env',
+    id: 'validTo',
+    numeric: false,
+    disablePadding: false,
+    label: 'Expiry Date',
+  },
+  {
+    id: 'environment',
     numeric: false,
     disablePadding: false,
     label: 'Environment',
   },
   {
-    id: 'SF_Group',
+    id: 'sfGroup',
     numeric: false,
     disablePadding: false,
-    label: 'Service First Group',
+    label: 'SF Group',
   },
   {
-    id: 'ITSI',
+    id: 'itServiceInstance',
     numeric: false,
     disablePadding: false,
     label: 'ITSI',
   },
   {
-    id: 'Thumbprint',
+    id: 'thumbPrint',
     numeric: false,
     disablePadding: false,
-    label: 'Thumbprint',
+    label: 'ThumbPrint',
   },
 ];
 
@@ -159,7 +145,7 @@ function EnhancedTableHead(props) {
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
             inputProps={{
-              'aria-label': 'select all desserts',
+              'aria-label': 'select all certificates',
             }}
           />
         </TableCell>
@@ -228,14 +214,14 @@ const EnhancedTableToolbar = (props) => {
           id="tableTitle"
           component="div"
         >
-          Nutrition
+          CertList
         </Typography>
       )}
 
       {numSelected > 0 ? (
-        <Tooltip title="Delete">
+        <Tooltip title="Edit Selected">
           <IconButton>
-            <DeleteIcon />
+            <EditIcon />
           </IconButton>
         </Tooltip>
       ) : (
@@ -340,17 +326,17 @@ export default function EnhancedTable({rows}) {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.Server);
+                  const isItemSelected = isSelected(row.managedDN);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.Server)}
+                      onClick={(event) => handleClick(event, row.managedDN)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.Server}
+                      key={row.managedDN}
                       selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
@@ -368,17 +354,19 @@ export default function EnhancedTable({rows}) {
                         scope="row"
                         padding="none"
                       >
-                        {row.Server}
+                        {row.managedDN}
                       </TableCell>
-                      <TableCell align="right">{row.DN}</TableCell>
-                      <TableCell align="right">{row.CN}</TableCell>
-                      <TableCell align="right">{row.KeyStore_Location}</TableCell>
-                      <TableCell align="right">{row.EP_Dependancy}</TableCell>
-                      <TableCell align="right">{row.Valid_Upto}</TableCell>
-                      <TableCell align="right">{row.Env}</TableCell>
-                      <TableCell align="right">{row.SF_Group}</TableCell>
-                      <TableCell align="right">{row.ITSI}</TableCell>
-                      <TableCell align="right">{row.Thumbprint}</TableCell>
+                      <TableCell align="right">{row.commonName}</TableCell>
+                      <TableCell align="right">{row.resource}</TableCell>
+                      <TableCell align="right">{row.serverName}</TableCell>
+                      <TableCell align="right">{row.keyStoreLocation}</TableCell>
+                      <TableCell align="right">{row.csrLocation}</TableCell>
+                      <TableCell align="right">{row.endPointDependancy}</TableCell>
+                      <TableCell align="right">{row.validTo}</TableCell>
+                      <TableCell align="right">{row.environment}</TableCell>
+                      <TableCell align="right">{row.sfGroup}</TableCell>
+                      <TableCell align="right">{row.itServiceInstance}</TableCell>
+                      <TableCell align="right">{row.thumbPrint}</TableCell>
                     </TableRow>
                   );
                 })}
