@@ -60,6 +60,12 @@ const CertSchema = new mongoose.Schema({
     },
     renewDate: {
         type: Date
+    },
+    renewdBy: {
+        type: String
+    },
+    renewdDate: {
+        type: Date
     }
 })
 

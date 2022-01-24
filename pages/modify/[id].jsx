@@ -30,7 +30,7 @@ const Server = ({cert}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         let errs = validate()
-        console.log({errs})
+        // console.log({errs})
         setErrors(errs)
         // console.log(checked, cr, cTask, date, approver, errors)
         setSubmitting(true)
@@ -62,7 +62,7 @@ const Server = ({cert}) => {
                 body: JSON.stringify({renew : checked, crNumber: cr, cTask: cTask, approver: approver, renewDate: date})
             })
             const data = await res.json()
-            console.log({data})
+            // console.log({data})
             router.push("/")
         } catch (error) {
             console.log({error})
@@ -72,7 +72,7 @@ const Server = ({cert}) => {
 
     const validate = () => {
         let err = {}
-        console.log("Inside validate ", checked, "cr:", cr, "ct:",cTask, "ap:", approver)
+        // console.log("Inside validate ", checked, "cr:", cr, "ct:",cTask, "ap:", approver)
         if (checked) {
             if (cr === '') {
                 err.cr = 'Please enter a Change Number'
@@ -84,7 +84,7 @@ const Server = ({cert}) => {
                 err.approver = 'Please enter your Name'
             }
         } else {
-            console.log("Else", approver)
+            // console.log("Else", approver)
             if (approver === '') {
                 err.approver = 'Please enter your Name'
             }

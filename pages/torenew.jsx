@@ -12,6 +12,7 @@ import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 // import MonthPicker from '@mui/lab/MonthPicker';
 
+const APP_NAME = process.env.APP_NAME
 const URL = process.env.URL
 const environments = [
   {
@@ -161,7 +162,7 @@ export default function Dashboard({certs}) {
   return (
     <div className='flex-grow px-12'>
       <div className="text-center text-4xl font-semibold text-white mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-        Middleware Certificate Dashboard - To Renew
+      {`${APP_NAME} - To Renew`}
       </div>
       <div >
         <Card sx={{ minWidth: 275 }} className='px-12' >

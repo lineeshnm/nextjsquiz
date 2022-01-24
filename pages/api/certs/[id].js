@@ -25,7 +25,7 @@ export default async (req, res) => {
             }
             break;
         case 'PUT':
-            console.log("In put method", id)
+            // console.log("In put method", id)
             // let update = JSON.parse(req.body)
             try {
                 Cert.findByIdAndUpdate(id, req.body, {

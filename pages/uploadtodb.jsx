@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useRouter } from 'next/router';
 
+const APP_NAME = process.env.APP_NAME
 const URL = process.env.URL
 
 const updatedatabase = () => {
@@ -38,7 +39,9 @@ const updatedatabase = () => {
 
     return (
         <div className='flex-grow px-12'>
-            <div className="text-center text-4xl font-semibold text-white mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Update CSV to Database</div>
+            <div className="text-center text-4xl font-semibold text-white mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+                {`${APP_NAME} - Update CSV to Database`}
+            </div>
             <div className='flex justify-evenly mt-6 py-8'>
                 <div className={`p-6 my-2 h-30 w-96 text-center text-white border-cyan-400 max-w-md border-2 ${
                     highlighted ? "border-purple-600-600 bg-purple-100 text-blue-700" : "border-gray-600"

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { EnhancedTable } from '../components'
 import { dataForTable } from '../utils/dbUtils'
 
+const APP_NAME = process.env.APP_NAME
 const URL = process.env.URL
 
 export default function Home({certs}) {
@@ -26,7 +27,7 @@ export default function Home({certs}) {
   return (
     <div className='flex-grow px-12' >
       <div className="text-center text-4xl font-semibold text-white mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-        Certificate List
+      {`${APP_NAME} - Review`}
       </div>
       <EnhancedTable rows={rows} />
     </div>
