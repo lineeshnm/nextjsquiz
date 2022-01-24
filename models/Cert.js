@@ -61,10 +61,13 @@ const CertSchema = new mongoose.Schema({
     renewDate: {
         type: Date
     },
-    renewdBy: {
+    renewed: {
+        type: Boolean
+    },
+    renewedBy: {
         type: String
     },
-    renewdDate: {
+    renewedDate: {
         type: Date
     }
 })

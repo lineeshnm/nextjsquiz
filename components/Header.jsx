@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { signout, isAuth } from '../actions/auth';
 import { useRouter } from 'next/router';
 
-const navMenuItems = ['ToRenew', 'NotToRenew']
+const navMenuItems = ['ToRenew', 'NotToRenew', 'Renewed']
 
 const Header = () => {
     const router = useRouter();

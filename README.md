@@ -18,6 +18,6 @@ This includes the authentication mechanism. where users need to login. This is m
 # Bulk confirmation page
 ## TODO: For Admin users -
 # Single Entry modification
-# Single Entry renewal update
+# Single Entry renewal update - Completed
 # Bulk Entry modification
 # Bulk Entry renewal update
