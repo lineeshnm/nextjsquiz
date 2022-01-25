@@ -12,7 +12,7 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 import Button from '@mui/material/Button';
-import { useRouter } from 'next/router';
+import Router , { useRouter } from 'next/router';
 import { isAuth } from '../../actions/auth';
 
 const APP_NAME = process.env.APP_NAME
@@ -20,17 +20,21 @@ const URL = process.env.URL
 
 const Server = ({cert}) => {
     // console.log(cert)
-    const [cr, setCr] = useState('')
-    const [cTask, setCTask] = useState('')
-    const [approver, setApprover] = useState('')
-    const [renewedBy, setRenewedBy] = useState('');
-    const [checked, setChecked] = useState(false)
-    const [renewed, setRenewed] = useState(false);
-    const [date, setDate] = useState(new Date())
-    const [validTo, setValidTo] = useState(new Date());
-    const [renewedDate, setRenewedDate] = useState(new Date());
+    const [serverName, setServerName] = useState(cert ? cert.serverName ? cert.serverName : '' : '');
+    const [crNumber, setCrNumber] = useState(cert ? cert.crNumber ? cert.crNumber : '' : '')
+    const [cTask, setCTask] = useState(cert ? cert.cTask ? cert.cTask : '' : '')
+    const [approver, setApprover] = useState(cert ? cert.approver ? cert.approver : '' : '')
+    const [logedinUser, setLogedinUser] = useState('');
+    const [renewedBy, setRenewedBy] = useState(cert ? cert.renewedBy ? cert.renewedBy : '' : '');
+    const [renew, setRenew] = useState(cert ? cert.renew? cert.renew: false : false)
+    const [renewed, setRenewed] = useState(cert ? cert.renewed ? cert.renewed : false : false);
+    const [renewDate, setRenewDate] = useState(cert ? cert.renewDate ? cert.renewDate : new Date() : new Date())
+    const [validTo, setValidTo] = useState(cert ? cert.validTo ? cert.validTo : new Date() : new Date());
+    const [renewedDate, setRenewedDate] = useState(cert ? cert.renewedDate ? cert.renewedDate : new Date() : new Date());
+    const [resource, setResource] = useState(cert ? cert.resource ? cert.resource : '': '');
     const [errors, setErrors] = useState('')
     const [submitting, setSubmitting] = useState(false)
+    const [modified, setModified] = useState(false);
     const router = useRouter();
 
     const handleSubmit = (e) => {
@@ -38,7 +42,7 @@ const Server = ({cert}) => {
         let errs = validate()
         // console.log({errs})
         setErrors(errs)
-        // console.log(checked, cr, cTask, date, approver, errors)
+        // console.log(renew, crNumber, cTask, date, approver, errors)
         setSubmitting(true)
     }
 
@@ -56,6 +60,27 @@ const Server = ({cert}) => {
         }
     }, [errors])
 
+    useEffect(() => {
+        if (process.browser) {
+            const user = JSON.parse(localStorage.getItem('user'))
+            setLogedinUser(user)
+            // console.log(user, logedinUser)
+        }
+        return () => {
+            console.log("unmounted from localstorage")
+        };
+    }, []);
+
+    useEffect(() => {
+        if (renewedBy === '') {
+            isAuth() && logedinUser && setRenewedBy(logedinUser.name)
+        }
+        return () => {
+            console.log("unmounted from logged in User")
+        };
+    }, [logedinUser]);
+
+    // console.log({logedinUser})
     const updateDB = async () => {
         let id = cert._id
         if (renewed) {
@@ -71,7 +96,26 @@ const Server = ({cert}) => {
                 })
                 const data = await res.json()
                 // console.log({data})
-                router.push("/torenew")
+                // router.push("/torenew")
+                Router.back()
+            } catch (error) {
+                console.log({error})
+            }
+        } else if(modified) {
+            console.log("Modified updating")
+            try {
+                const res =  await fetch(`${URL}/api/certs/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        "Accept" : "application/json",
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({resource, serverName, crNumber})
+                })
+                const data = await res.json()
+                // console.log({data})
+                // router.push("/")
+                Router.back()
             } catch (error) {
                 console.log({error})
             }
@@ -84,11 +128,12 @@ const Server = ({cert}) => {
                         "Accept" : "application/json",
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({renew : checked, crNumber: cr, cTask: cTask, approver: approver, renewDate: date})
+                    body: JSON.stringify({renew, crNumber, cTask: cTask, approver: approver, renewDate})
                 })
                 const data = await res.json()
                 // console.log({data})
-                router.push("/")
+                // router.push("/")
+                Router.back()
             } catch (error) {
                 console.log({error})
             }
@@ -100,16 +145,26 @@ const Server = ({cert}) => {
 
     const validate = () => {
         let err = {}
-        console.log("Inside validate ", checked, "cr:", cr, "ct:",cTask, "ap:", approver, renewedBy)
-        if (checked) {
-            if (cr === '') {
-                err.cr = 'Please enter a Change Number'
+        console.log("Inside validate ", renew, "crNumber:", crNumber, "ct:",cTask, "ap:", approver, renewedBy)
+        if (renew) {
+            if (crNumber === '') {
+                err.crNumber = 'Please enter a Change Number'
             } 
             if (cTask === '') {
                 err.cTask = 'Please enter a change task'
             } 
             if (approver === '') {
                 err.approver = 'Please enter your Name'
+            }
+        } else if (modified) {
+            if (resource === '') {
+                err.resource = 'Please enter a Resource Name'
+            } 
+            if (serverName === '') {
+                err.serverName = 'Please enter a Server Name'
+            }
+            if (crNumber === '') {
+                err.crNumber = 'Please enter a Change Number'
             }
         } else if (renewed) {
             if (renewedBy === '') {
@@ -212,22 +267,22 @@ const Server = ({cert}) => {
                                 <Grid item xs={2}>
                                     <Stack direction="row" spacing={1} alignItems="center">
                                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>Renew Certificate ?</Typography>
-                                        <FormControlLabel control={<Switch checked={checked} />} label={checked? "Yes": "No"} onChange={(event) => setChecked(event.target.checked)}/>
+                                        <FormControlLabel control={<Switch checked={renew} />} label={renew? "Yes": "No"} onChange={(event) => setRenew(event.target.checked)}/>
                                     </Stack>
                                 </Grid>
                                 {
-                                    checked &&
+                                    renew &&
                                     <>
                                         <Grid item xs={2}>
                                             <Stack direction="row" spacing={1} alignItems="center">
                                                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>Change Request</Typography>
-                                                <TextField label="Change Number" color="secondary" error={errors.cr ? true: false} onChange={(event) => setCr(event.target.value)} />
+                                                <TextField value={crNumber} placeholder="Change Number" color="secondary" error={errors.crNumber ? true: false} onChange={(event) => setCrNumber(event.target.value)} />
                                             </Stack>
                                         </Grid>
                                         <Grid item xs={2}>
                                             <Stack direction="row" spacing={1} alignItems="center">
                                                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>Change Task</Typography>
-                                                <TextField label="Change Task Number" color="secondary" error={errors.cTask ? true: false} onChange={(event) => setCTask(event.target.value)} />
+                                                <TextField value={cTask} placeholder="Change Task Number" color="secondary" error={errors.cTask ? true: false} onChange={(event) => setCTask(event.target.value)} />
                                             </Stack>
                                         </Grid>
                                         <Grid item xs={2}>
@@ -238,8 +293,8 @@ const Server = ({cert}) => {
                                                     <DesktopDatePicker
                                                         label="Date"
                                                         inputFormat="MM/dd/yyyy"
-                                                        value={date}
-                                                        onChange={(newDate) => setDate(newDate)}
+                                                        value={renewDate}
+                                                        onChange={(newDate) => setRenewDate(newDate)}
                                                         renderInput={(params) => <TextField {...params} />}
                                                     />
                                                     </Stack>
@@ -251,7 +306,7 @@ const Server = ({cert}) => {
                                 <Grid item xs={2}>
                                     <Stack direction="row" spacing={1} alignItems="center">
                                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>Approver Name</Typography>
-                                        <TextField label="Your Name" color="secondary" error={errors.approver ? true: false} onChange={(event) => setApprover(event.target.value)} />
+                                        <TextField value={renewedBy} placeholder="Enter Your Name" color="secondary" error={errors.approver ? true: false} onChange={(event) => setApprover(event.target.value)} />
                                     </Stack>
                                 </Grid>
                                 <Grid item xs={2}>
@@ -297,12 +352,22 @@ const Server = ({cert}) => {
                             <Grid item xs={1}>
                                 SF Group
                             </Grid>
+                            <Grid item xs={1}>
+                                CR Number
+                            </Grid>
                             </Grid>
                             <Grid container spacing={1}>
                                 <Grid item xs={1}>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                                        {cert.serverName}
-                                    </Typography>
+                                    <TextField 
+                                        value={serverName} 
+                                        color="secondary" 
+                                        placeholder='Server Name'
+                                        error={errors.serverName ? true: false} 
+                                        onChange={(event) => {
+                                            setServerName(event.target.value)
+                                            setModified(true)
+                                        }} 
+                                    />
                                 </Grid>
                                 <Grid item xs={1}>
                                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
@@ -330,9 +395,16 @@ const Server = ({cert}) => {
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={1}>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                                    {cert.resource}
-                                    </Typography>
+                                    <TextField 
+                                        value={resource} 
+                                        color="secondary" 
+                                        placeholder='Resource Name'
+                                        error={errors.resource ? true: false} 
+                                        onChange={(event) => {
+                                            setResource(event.target.value)
+                                            setModified(true)
+                                        }} 
+                                    />
                                 </Grid>
                                 <Grid item xs={1}>
                                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
@@ -343,6 +415,18 @@ const Server = ({cert}) => {
                                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
                                     {String(cert.sfGroup)}
                                     </Typography>
+                                </Grid>
+                                <Grid item xs={1}>
+                                    <TextField 
+                                        value={crNumber} 
+                                        color="secondary" 
+                                        placeholder='Change Number'
+                                        error={errors.crNumber ? true: false} 
+                                        onChange={(event) => {
+                                            setCrNumber(event.target.value)
+                                            setModified(true)
+                                        }} 
+                                    />
                                 </Grid>
                             </Grid>
                             <Grid container spacing={1} className='py-20'>
@@ -390,7 +474,7 @@ const Server = ({cert}) => {
                                         <Grid item xs={2}>
                                             <Stack direction="row" spacing={1} alignItems="center">
                                                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>Confirmed By</Typography>
-                                                <TextField label="Your Name" color="secondary" error={errors.renewedBy ? true: false} onChange={(event) => setRenewedBy(event.target.value)} />
+                                                <TextField value={renewedBy} placeholder="Enter Your Name" color="secondary" error={errors.renewedBy ? true: false} onChange={(event) => setRenewedBy(event.target.value)} />
                                             </Stack>
                                         </Grid>
                                     </>

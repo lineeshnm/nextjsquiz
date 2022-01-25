@@ -8,10 +8,7 @@ const navMenuItems = ['ToRenew', 'NotToRenew', 'Renewed']
 const Header = () => {
     const router = useRouter();
     return (
-        <div className="flex-grow px-12 lg:flex-row bg-white bg-opacity-10 rounded-3xl overflow-hidden max-w-[95%] shadow-lg m-12"
-        style={{
-        backdropFilter: 'blur(10px)',
-        }}>
+        <div className="flex-grow px-12 lg:flex-row bg-white bg-opacity-10 rounded-3xl overflow-hidden max-w-[95%] shadow-lg m-12 backdrop-blur-md">
             <div className="flex justify-between border-b w-full border-blue-400 py-8 ">
                 <div className="md:float-left block">
                     <Link href="/">
@@ -61,10 +58,12 @@ const Header = () => {
                 {
                     isAuth() && (
                         <div className="md:float-right block">
-                            <span 
-                                className="cursor-pointer font-bold text-2xl text-white" 
-                                onClick={() => signout(() => router.push(`/`))}
-                            >Logout</span>
+                            <Link href="/">
+                                <span 
+                                    className="cursor-pointer font-bold text-2xl text-white" 
+                                    onClick={() => signout(() => router.push(`/`))}
+                                >Logout</span>
+                            </Link>
                         </div>
                     )
                 }
