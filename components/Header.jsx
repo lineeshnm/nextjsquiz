@@ -24,11 +24,16 @@ const Header = () => {
                 {navMenuItems.map((NavMenu, index) => (
                     <Link key={index} href={`/${NavMenu.toLowerCase()}`}><span className="md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer">{NavMenu}</span></Link>
                 ))}
+                <Link key='review' href={`/bulk`}>
+                    <span className="md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer">
+                        Bulk Update
+                    </span>
+                </Link>
                 { isAuth() && (
                     <>
-                        <Link key='review' href={`/review`}>
+                        <Link key='upload' href={`/modify`}>
                             <span className="md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer">
-                                Review
+                                DB Modify
                             </span>
                         </Link>
                         <Link key='upload' href={`/uploadtodb`}>
@@ -41,18 +46,11 @@ const Header = () => {
                 </div>
                 {
                     !isAuth() && (
-                        <>
-                            <div className="md:float-right block">
-                                <Link href="/signin">
-                                    <span className="cursor-pointer font-bold text-2xl text-white">Login</span>
-                                </Link>
-                            </div>
-                            <div className="md:float-right block">
-                                <Link href="/signup">
-                                    <span className="cursor-pointer font-bold text-2xl text-white">SignUp</span>
-                                </Link>
-                            </div>
-                        </>
+                        <div className="md:float-right block">
+                            <Link href="/signin">
+                                <span className="cursor-pointer font-bold text-2xl text-white">Sign In</span>
+                            </Link>
+                        </div>
                     )
                 }
                 {

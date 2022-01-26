@@ -138,7 +138,7 @@ const Server = ({cert}) => {
                 console.log({error})
             }
         }
-        console.log("inside update DB", id)
+        // console.log("inside update DB", id)
         
 
     }
@@ -306,7 +306,7 @@ const Server = ({cert}) => {
                                 <Grid item xs={2}>
                                     <Stack direction="row" spacing={1} alignItems="center">
                                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>Approver Name</Typography>
-                                        <TextField value={renewedBy} placeholder="Enter Your Name" color="secondary" error={errors.approver ? true: false} onChange={(event) => setApprover(event.target.value)} />
+                                        <TextField value={approver} placeholder="Enter Your Name" color="secondary" error={errors.approver ? true: false} onChange={(event) => setApprover(event.target.value)} />
                                     </Stack>
                                 </Grid>
                                 <Grid item xs={2}>

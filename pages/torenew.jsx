@@ -324,7 +324,7 @@ export const getStaticProps = async (context) => {
     }
   }
   return {
-    props: { certs: data.data.filter(row => row.renew) }, // will be passed to the page component as props
+    props: { certs: data.data.filter(row => row.renew && !row.renewed) }, // will be passed to the page component as props
     revalidate: 10
   }
 }

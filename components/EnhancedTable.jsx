@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -185,7 +186,7 @@ EnhancedTableHead.propTypes = {
 };
 
 const EnhancedTableToolbar = (props) => {
-  const { numSelected } = props;
+  const { numSelected, bulkEdit } = props;
 
   return (
     <Toolbar
@@ -220,7 +221,7 @@ const EnhancedTableToolbar = (props) => {
 
       {numSelected > 0 ? (
         <Tooltip title="Edit Selected">
-          <IconButton>
+          <IconButton onClick={bulkEdit}>
             <EditIcon />
           </IconButton>
         </Tooltip>
@@ -240,13 +241,31 @@ EnhancedTableToolbar.propTypes = {
 };
 
 export default function EnhancedTable({rows}) {
-  // console.log("inside EnhancedTable", rows)
+  const router = useRouter();
+
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+
+  const bulkEdit = () => {
+    router.push(
+      {
+        pathname: '/bulk/update',
+        query: {
+          selected,
+        }
+      },
+      undefined,
+      {
+      shallow: true,
+      }
+    )
+  }
+
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -256,7 +275,7 @@ export default function EnhancedTable({rows}) {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.name);
+      const newSelecteds = rows.map((n) => n._id);
       setSelected(newSelecteds);
       return;
     }
@@ -305,7 +324,7 @@ export default function EnhancedTable({rows}) {
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar numSelected={selected.length} bulkEdit={bulkEdit}/>
         <TableContainer>
           <Table
             sx={{ minWidth: 750 }}
@@ -326,17 +345,17 @@ export default function EnhancedTable({rows}) {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.managedDN);
+                  const isItemSelected = isSelected(row._id);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.managedDN)}
+                      onClick={(event) => handleClick(event, row._id)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.managedDN}
+                      key={row._id}
                       selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
