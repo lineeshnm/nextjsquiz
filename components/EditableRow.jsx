@@ -13,15 +13,6 @@ const EditableRow = ({ cert, editFormData , handleEditFormChange, handleCancelCl
         <Box sx={{ flexGrow: 1 }}
         >
             <Grid container spacing={1}>
-                <Grid item xs={2}>
-                    <TextField 
-                        name="thumbPrint" 
-                        label="ThumbPrint" 
-                        color="secondary" 
-                        value={editFormData.thumbPrint}
-                        onChange={handleEditFormChange} 
-                    />
-                </Grid>
                 <Grid item xs={1}>
                     <TextField 
                         name="serverName" 
@@ -31,17 +22,21 @@ const EditableRow = ({ cert, editFormData , handleEditFormChange, handleCancelCl
                         onChange={handleEditFormChange} 
                     />
                 </Grid>
-                <Grid item xs={1}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                        {cert.validTo}
-                    </Typography>
+                <Grid item xs={2}>
+                    <TextField 
+                        name="thumbPrint" 
+                        label="Finger Print" 
+                        color="secondary" 
+                        value={editFormData.thumbPrint}
+                        onChange={handleEditFormChange} 
+                    />
                 </Grid>
                 <Grid item xs={2}>
                     <TextField 
-                        name="managedDN" 
-                        label="Managed DN" 
+                        name="keyStoreLocation" 
+                        label="KeyStore Location" 
                         color="secondary" 
-                        value={editFormData.managedDN}
+                        value={editFormData.keyStoreLocation}
                         onChange={handleEditFormChange} 
                     />
                 </Grid>
@@ -54,6 +49,11 @@ const EditableRow = ({ cert, editFormData , handleEditFormChange, handleCancelCl
                         onChange={handleEditFormChange} 
                     />
                 </Grid>
+                <Grid item xs={1}>
+                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
+                        {cert.environment}
+                    </Typography>
+                </Grid>
                 <Grid item xs={2}>
                     <TextField 
                         name="itServiceInstance" 
@@ -64,18 +64,18 @@ const EditableRow = ({ cert, editFormData , handleEditFormChange, handleCancelCl
                     />
                 </Grid>
                 <Grid item xs={1}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                        {cert.environment}
-                    </Typography>
-                </Grid>
-                <Grid item xs={1}>
                     <TextField 
-                        name="resource" 
-                        label="Resource Name" 
+                        name="sfGroup" 
+                        label="ServieFirst Group" 
                         color="secondary" 
-                        value={editFormData.resource}
+                        value={editFormData.sfGroup}
                         onChange={handleEditFormChange} 
                     />
+                </Grid>
+                <Grid item xs={1}>
+                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
+                        {editFormData.validTo}
+                    </Typography>
                 </Grid>
                 <Grid item xs={1} className='space-x-3'>
                     <Tooltip title="Save Modification" arrow>

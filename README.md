@@ -27,16 +27,18 @@ This includes the authentication mechanism. where users need to login. This is m
 ### Bulk Entry renewal update - Completed
 ## TODO: Need to remove Signup from every page or rename signup page to some other name and create a banner in signup - completed
 #### Display most of the fields - completed
-### DB modification for admin users
+## TODO: Protect admin pages - completed
 #### Edit and delete button - completed
-#### Edit most of the fields - Date and drop down to do
 #### Delete function - done
-#### Review button
-#### Confirm Button
-#### Cancel Button
+
+## Dashboard page - View details - Done
+## Singe Modify page need to include all details- Done
+#### Cancel Button - function - completed
+#### Edit most of the fields - completed
+
+
+### DB modification for admin users
+### Modal to Delete confirmation
+#### Confirm to Upload to DB 
 #### Filter option in Bulk Update
-## TODO: Protect admin pages
-
-
-
 ## TODO: Filter the renewed, to renew list based on how many days to renew

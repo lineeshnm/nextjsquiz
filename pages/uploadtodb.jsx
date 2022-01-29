@@ -6,6 +6,8 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useRouter } from 'next/router';
+import ContactCard from '../components/ContactCard';
+import { isAuth } from '../actions/auth';
 
 const APP_NAME = process.env.APP_NAME
 const URL = process.env.URL
@@ -42,47 +44,57 @@ const updatedatabase = () => {
             <div className="text-center text-4xl font-semibold text-white mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
                 {`${APP_NAME} - Update CSV to Database`}
             </div>
-            <div className='flex justify-evenly mt-6 py-8'>
-                <div className={`p-6 my-2 h-30 w-96 text-center text-white border-cyan-400 max-w-md border-2 ${
-                    highlighted ? "border-purple-600-600 bg-purple-100 text-blue-700" : "border-gray-600"
-                    }`}
-                    onDragEnter={() => {
-                        setHighlighted(true);
-                    }}
-                    onDragLeave={() => {
-                        setHighlighted(false);
-                    }}
-                    onDragOver={(e) => {
-                        e.preventDefault();
-                    }}
-                    onDrop={(e) => {
-                        e.preventDefault();
-                        setHighlighted(false);
-                        // console.log(e.dataTransfer.files)
+            {
+                !isAuth() && (
+                <ContactCard />
+                )
+            }
+            {
+                isAuth() && (
+                    <div className='flex justify-evenly mt-6 py-8'>
+                        <div className={`p-6 my-2 h-30 w-96 text-center text-white border-cyan-400 max-w-md border-2 ${
+                            highlighted ? "border-purple-600-600 bg-purple-100 text-blue-700" : "border-gray-600"
+                            }`}
+                            onDragEnter={() => {
+                                setHighlighted(true);
+                            }}
+                            onDragLeave={() => {
+                                setHighlighted(false);
+                            }}
+                            onDragOver={(e) => {
+                                e.preventDefault();
+                            }}
+                            onDrop={(e) => {
+                                e.preventDefault();
+                                setHighlighted(false);
+                                // console.log(e.dataTransfer.files)
+        
+                                Array.from(e.dataTransfer.files)
+                                    .filter((file) => file.type === "text/csv" || file.type === "application/vnd.ms-excel")
+                                    .forEach(async (file) => {
+                                        // console.log(file)
+                                        const text = await file.text();
+                                        const result = parse(text, { header: true });
+                                        setData((existing) => [...existing, ...result.data]);
+                                    });
+                            }}
+                        >
+                            DROP YOUR FILES HERE
+                        </div>
+                        <div className='my-auto'>
+                            <Button variant="contained" component="span" className='bg-blue-400' onClick={updateDB}>
+                                Upload to DB
+                            </Button>
+                        </div>
+                        <div className='my-auto'>
+                            <Button variant="contained" component="span" className='bg-blue-400' onClick={() => setData([])}>
+                                Clear
+                            </Button>
+                        </div>
+                    </div>
+                )
+            }
 
-                        Array.from(e.dataTransfer.files)
-                            .filter((file) => file.type === "text/csv" || file.type === "application/vnd.ms-excel")
-                            .forEach(async (file) => {
-                                // console.log(file)
-                                const text = await file.text();
-                                const result = parse(text, { header: true });
-                                setData((existing) => [...existing, ...result.data]);
-                            });
-                    }}
-                >
-                    DROP YOUR FILES HERE
-                </div>
-                <div className='my-auto'>
-                    <Button variant="contained" component="span" className='bg-blue-400' onClick={updateDB}>
-                        Upload to DB
-                    </Button>
-                </div>
-                <div className='my-auto'>
-                    <Button variant="contained" component="span" className='bg-blue-400' onClick={() => setData([])}>
-                        Clear
-                    </Button>
-                </div>
-            </div>
             {data.length >0 && 
                 <Card sx={{ minWidth: 275 }} className='px-12 py-8' >
                     <Box sx={{ flexGrow: 1 }} >

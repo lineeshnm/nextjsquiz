@@ -31,12 +31,12 @@ const Header = () => {
                 </Link>
                 { isAuth() && (
                     <>
-                        <Link key='upload' href={`/modify`}>
+                        <Link key='modify' href={`/modify`}>
                             <span className="md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer">
                                 DB Modify
                             </span>
                         </Link>
-                        <Link key='upload' href={`/uploadtodb`}>
+                        <Link key='uploadtoDB' href={`/uploadtodb`}>
                             <span className="md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer">
                                 UploadtoDB
                             </span>

@@ -56,10 +56,22 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: 'managedDN',
+    id: 'serverName',
     numeric: false,
-    disablePadding: true,
-    label: 'Managed DN',
+    disablePadding: false,
+    label: 'Server Name',
+  },
+  {
+    id: 'thumbPrint',
+    numeric: false,
+    disablePadding: false,
+    label: 'ThumbPrint',
+  },
+  {
+    id: 'keyStoreLocation',
+    numeric: false,
+    disablePadding: false,
+    label: 'KeyStore Location',
   },
   {
     id: 'commonName',
@@ -68,22 +80,40 @@ const headCells = [
     label: 'Common Name',
   },
   {
+    id: 'environment',
+    numeric: false,
+    disablePadding: false,
+    label: 'Environment',
+  },
+  {
+    id: 'itServiceInstance',
+    numeric: false,
+    disablePadding: false,
+    label: 'ITSI',
+  },
+  {
+    id: 'sfGroup',
+    numeric: false,
+    disablePadding: false,
+    label: 'SF Group',
+  },
+  {
+    id: 'validTo',
+    numeric: false,
+    disablePadding: false,
+    label: 'Expiry Date',
+  },
+  {
+    id: 'managedDN',
+    numeric: false,
+    disablePadding: true,
+    label: 'Managed DN',
+  },
+  {
     id: 'resource',
     numeric: false,
     disablePadding: false,
     label: 'Resource Name',
-  },
-  {
-    id: 'serverName',
-    numeric: false,
-    disablePadding: false,
-    label: 'Server Name',
-  },
-  {
-    id: 'keyStoreLocation',
-    numeric: false,
-    disablePadding: false,
-    label: 'KeyStore Location',
   },
   {
     id: 'csrLocation',
@@ -96,36 +126,6 @@ const headCells = [
     numeric: false,
     disablePadding: false,
     label: 'EndPoint Dependancy',
-  },
-  {
-    id: 'validTo',
-    numeric: false,
-    disablePadding: false,
-    label: 'Expiry Date',
-  },
-  {
-    id: 'environment',
-    numeric: false,
-    disablePadding: false,
-    label: 'Environment',
-  },
-  {
-    id: 'sfGroup',
-    numeric: false,
-    disablePadding: false,
-    label: 'SF Group',
-  },
-  {
-    id: 'itServiceInstance',
-    numeric: false,
-    disablePadding: false,
-    label: 'ITSI',
-  },
-  {
-    id: 'thumbPrint',
-    numeric: false,
-    disablePadding: false,
-    label: 'ThumbPrint',
   },
 ];
 
@@ -222,13 +222,13 @@ const EnhancedTableToolbar = (props) => {
       {numSelected > 0 ? (
         <Tooltip title="Edit Selected">
           <IconButton onClick={bulkEdit}>
-            <EditIcon />
+            <EditIcon color="primary" sx={{ fontSize: 32 }} />
           </IconButton>
         </Tooltip>
       ) : (
         <Tooltip title="Filter list">
           <IconButton>
-            <FilterListIcon />
+            <FilterListIcon color="primary" sx={{ fontSize: 32 }} />
           </IconButton>
         </Tooltip>
       )}
@@ -373,19 +373,19 @@ export default function EnhancedTable({rows}) {
                         scope="row"
                         padding="none"
                       >
-                        {row.managedDN}
+                        {row.serverName}
                       </TableCell>
-                      <TableCell align="right">{row.commonName}</TableCell>
-                      <TableCell align="right">{row.resource}</TableCell>
-                      <TableCell align="right">{row.serverName}</TableCell>
-                      <TableCell align="right">{row.keyStoreLocation}</TableCell>
-                      <TableCell align="right">{row.csrLocation}</TableCell>
-                      <TableCell align="right">{row.endPointDependancy}</TableCell>
-                      <TableCell align="right">{row.validTo}</TableCell>
-                      <TableCell align="right">{row.environment}</TableCell>
-                      <TableCell align="right">{row.sfGroup}</TableCell>
-                      <TableCell align="right">{row.itServiceInstance}</TableCell>
                       <TableCell align="right">{row.thumbPrint}</TableCell>
+                      <TableCell align="right">{row.keyStoreLocation}</TableCell>
+                      <TableCell align="right">{row.commonName}</TableCell>
+                      <TableCell align="right">{row.environment}</TableCell>
+                      <TableCell align="right">{row.itServiceInstance}</TableCell>
+                      <TableCell align="right">{row.sfGroup}</TableCell>
+                      <TableCell align="right">{row.validTo}</TableCell>
+                      <TableCell align="right">{row.managedDN}</TableCell>
+                      <TableCell align="right">{row.resource}</TableCell>
+                      <TableCell align="right">{row.csrLocation}</TableCell>
+                      <TableCell align="right">{row.endPointDependancy.toString()}</TableCell>
                     </TableRow>
                   );
                 })}

@@ -5,36 +5,38 @@ import Grid from '@mui/material/Grid';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Tooltip from '@mui/material/Tooltip';
+import { color } from '@mui/system';
 
-const ReadOnlyRow = ({ cert , handleEditClick, handleDeleteClick }) => {
+const ReadOnlyRow = ({ cert , handleEditClick, handleDeleteClick, modified }) => {
+    // console.log({modified})
   return (
     <div key={cert._id} >
         <Box sx={{ flexGrow: 1 }}
         >
-            <Grid container spacing={1}>
+            <Grid container spacing={2}>
+                <Grid item xs={1}>
+                    <Typography sx={{ fontSize: 14, color: (modified) ? "blue" : "blak" }} color="text.secondary" gutterBottom className='px-2'>
+                        {cert.serverName}
+                    </Typography>
+                </Grid>
                 <Grid item xs={2}>
                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
                         {cert.thumbPrint}
                     </Typography>
                 </Grid>
-                <Grid item xs={1}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                        {cert.serverName}
-                    </Typography>
-                </Grid>
-                <Grid item xs={1}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                        {cert.validTo}
-                    </Typography>
-                </Grid>
                 <Grid item xs={2}>
                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                        {cert.managedDN}
+                        {cert.keyStoreLocation}
                     </Typography>
                 </Grid>
                 <Grid item xs={1}>
                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
                         {cert.commonName}
+                    </Typography>
+                </Grid>
+                <Grid item xs={1}>
+                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
+                        {cert.environment}
                     </Typography>
                 </Grid>
                 <Grid item xs={2}>
@@ -44,12 +46,12 @@ const ReadOnlyRow = ({ cert , handleEditClick, handleDeleteClick }) => {
                 </Grid>
                 <Grid item xs={1}>
                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                        {cert.environment}
+                        {cert.sfGroup}
                     </Typography>
                 </Grid>
                 <Grid item xs={1}>
                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                        {String(cert.resource)}
+                        {String(cert.validTo)}
                     </Typography>
                 </Grid>
                 <Grid item xs={1} className='space-x-3'>

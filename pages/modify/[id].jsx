@@ -14,6 +14,7 @@ import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 import Button from '@mui/material/Button';
 import Router , { useRouter } from 'next/router';
 import { isAuth } from '../../actions/auth';
+import CertificateCard from '../../components/CertificateCard';
 
 const APP_NAME = process.env.APP_NAME
 const URL = process.env.URL
@@ -187,82 +188,7 @@ const Server = ({cert}) => {
                 !isAuth() && cert && (
                     <Card sx={{ minWidth: 275 }} className='px-12 py-20' >
                         <Box sx={{ flexGrow: 1 }} >
-                        <Grid container spacing={1} className='py-8'>
-                            <Grid item xs={1}>
-                                Server Name
-                            </Grid>
-                            <Grid item xs={1}>
-                                Expiry Date
-                            </Grid>
-                            <Grid item xs={2}>
-                                Managed DN
-                            </Grid>
-                            <Grid item xs={1}>
-                                C Name
-                            </Grid>
-                            <Grid item xs={2}>
-                                ITSI
-                            </Grid>
-                            <Grid item xs={1}>
-                                Environment
-                            </Grid>
-                            <Grid item xs={1}>
-                                Resource Name
-                            </Grid>
-                            <Grid item xs={1}>
-                                Dependancy
-                            </Grid>
-                            <Grid item xs={1}>
-                                SF Group
-                            </Grid>
-                            </Grid>
-                            <Grid container spacing={1}>
-                                <Grid item xs={1}>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                                        {cert.serverName}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={1}>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                                    {cert.validTo}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={2}>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                                    {cert.managedDN}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={1}>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                                    {cert.commonName}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={2}>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                                    {cert.itServiceInstance}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={1}>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                                    {cert.environment}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={1}>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                                    {cert.resource}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={1}>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                                    {String(cert.endPointDependancy)}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={1}>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                                    {String(cert.sfGroup)}
-                                    </Typography>
-                                </Grid>
-                            </Grid>
+                            <CertificateCard cert={cert} button={false} edit={false} />
                             <Grid container spacing={1} className='py-20'>
                                 <Grid item xs={2}>
                                     <Stack direction="row" spacing={1} alignItems="center">
@@ -324,111 +250,7 @@ const Server = ({cert}) => {
             { isAuth() && cert && (
                     <Card sx={{ minWidth: 275 }} className='px-12 py-20' >
                         <Box sx={{ flexGrow: 1 }} >
-                        <Grid container spacing={1} className='py-8'>
-                            <Grid item xs={1}>
-                                Server Name
-                            </Grid>
-                            <Grid item xs={1}>
-                                Expiry Date
-                            </Grid>
-                            <Grid item xs={2}>
-                                Managed DN
-                            </Grid>
-                            <Grid item xs={1}>
-                                C Name
-                            </Grid>
-                            <Grid item xs={2}>
-                                ITSI
-                            </Grid>
-                            <Grid item xs={1}>
-                                Environment
-                            </Grid>
-                            <Grid item xs={1}>
-                                Resource Name
-                            </Grid>
-                            <Grid item xs={1}>
-                                Dependancy
-                            </Grid>
-                            <Grid item xs={1}>
-                                SF Group
-                            </Grid>
-                            <Grid item xs={1}>
-                                CR Number
-                            </Grid>
-                            </Grid>
-                            <Grid container spacing={1}>
-                                <Grid item xs={1}>
-                                    <TextField 
-                                        value={serverName} 
-                                        color="secondary" 
-                                        placeholder='Server Name'
-                                        error={errors.serverName ? true: false} 
-                                        onChange={(event) => {
-                                            setServerName(event.target.value)
-                                            setModified(true)
-                                        }} 
-                                    />
-                                </Grid>
-                                <Grid item xs={1}>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                                    {cert.validTo}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={2}>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                                    {cert.managedDN}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={1}>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                                    {cert.commonName}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={2}>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                                    {cert.itServiceInstance}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={1}>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                                    {cert.environment}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={1}>
-                                    <TextField 
-                                        value={resource} 
-                                        color="secondary" 
-                                        placeholder='Resource Name'
-                                        error={errors.resource ? true: false} 
-                                        onChange={(event) => {
-                                            setResource(event.target.value)
-                                            setModified(true)
-                                        }} 
-                                    />
-                                </Grid>
-                                <Grid item xs={1}>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                                    {String(cert.endPointDependancy)}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={1}>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
-                                    {String(cert.sfGroup)}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={1}>
-                                    <TextField 
-                                        value={crNumber} 
-                                        color="secondary" 
-                                        placeholder='Change Number'
-                                        error={errors.crNumber ? true: false} 
-                                        onChange={(event) => {
-                                            setCrNumber(event.target.value)
-                                            setModified(true)
-                                        }} 
-                                    />
-                                </Grid>
-                            </Grid>
+                            <CertificateCard cert={cert} button={false} edit={true} />
                             <Grid container spacing={1} className='py-20'>
                                 <Grid item xs={2}>
                                     <Stack direction="row" spacing={1} alignItems="center">
