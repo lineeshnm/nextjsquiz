@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { signin, authenticate, isAuth } from '../actions/auth';
 import { useRouter } from 'next/router';
-import Link from 'next/link'
+import Tilt from 'react-parallax-tilt';
+import Link from 'next/link';
+import Background from '../components/Background';
 const APP_NAME = process.env.APP_NAME
 
 const SignIn = () => {
@@ -52,54 +54,37 @@ const SignIn = () => {
 
     const signinForm = () => {
         return (
-            <div className="flex justify-center w-full">
-                <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}> 
-                    <div className='mb-4'>
-                        <label className="block text-gray-700 text-sm font-bold mb-2" name="username">
-                            Email ID
-                        </label>
-                        <input 
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                            id="email" 
-                            type="text" 
-                            name="email"
-                            placeholder="Email Address" 
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
-                        />
+            // <div className="bg-gray-900 h-screen w-full relative overflow-hidden flex justify-center items-center">
+            <div className='h-screen w-full relative overflow-hidden flex justify-center items-center'>
+                <Background />
+                <Tilt>
+                    <div className="container h-96 w-96 bg-white bg-opacity-10 rounded-2xl shadow-5xl relative z-2 border border-opacity-30 border-r-0 border-b-0 backdrop-filter backdrop-blur-sm">
+                        <form className='h-full flex flex-col justify-evenly items-center' onSubmit={handleSubmit} > 
+                            <div className='text-white font-poppins text-2xl tracking-widest'>Login form</div>
+                            <label className="text-white font-poppins text-1xl tracking-widest" name="username">
+                                Email ID
+                            </label>
+                            <input type="text" name="email" id="email" placeholder='Email Address' className='input-text' value={email} onChange={e => setEmail(e.target.value)} />
+                            <label className="text-white font-poppins text-1xl tracking-widest" name="password">
+                                Password
+                            </label>
+                            <input type="password" id="password"  placeholder='Password' className='input-text' value={password} onChange={e => setPassword(e.target.value)} />
+                            <div className='flex space-x-9'>
+                                <input type="Submit" className='cursor-pointer font-poppins rounded-full px-5 py-1 bg-white bg-opacity-50 hover:bg-white hover:bg-opacity-80 '/>
+                                <Link href="/signup">
+                                    <span className="cursor-pointer inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">SignUp?</span>
+                                </Link>
+                            </div>
+                        </form>
                     </div>
-                    <div className="mb-6">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" name="password">
-                            Password
-                        </label>
-                        <input 
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
-                            id="password" 
-                            type="password" 
-                            placeholder="******************" 
-                            value={password}
-                            onChange={e => setPassword(e.target.value)}
-                        />
-                        </div>
-                        <div className="flex items-center justify-between">
-                        <button 
-                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
-                            type="submit"
-                        >
-                            Sign In
-                        </button>
-                        <Link href="/signup">
-                            <span className="cursor-pointer inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">SignUp?</span>
-                        </Link>
-                        </div>
-                </form>
+                </Tilt>
             </div>
         );
     };
 
     return (
         <div className='flex-grow px-12'>
-            <div className="text-center text-4xl font-semibold text-white mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">{`${APP_NAME} - Signin`}</div>
+            <div className="text-center text-4xl font-semibold text-white mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 tracking-widest">{`${APP_NAME} - Signin`}</div>
             {showError()}
             {showLoading()}
             {showMessage()}

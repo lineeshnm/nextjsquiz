@@ -18,6 +18,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import Background from '../../components/Background';
 
 const APP_NAME = process.env.APP_NAME
 const URL = process.env.URL
@@ -270,7 +271,7 @@ const Modify = ({certs}) => {
 
   return (
     <div className='flex-grow px-12' >
-      <div className="text-center text-4xl font-semibold text-white mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+      <div className="text-center text-4xl font-semibold text-white mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 tracking-widest">
       {`${APP_NAME} - DB Modify`}
       </div>
       {
@@ -279,28 +280,29 @@ const Modify = ({certs}) => {
         )
       }
       { isAuth() && (
-        <div >
-          <Card sx={{ minWidth: 275 }} className='px-12 mb-8' >
+        <div className='h-screen w-full relative overflow-hidden flex justify-center py-6'>
+          <Background />
+          <Card sx={{ minWidth: 275 }} className='px-12 mb-8 bg-white bg-opacity-10 rounded-2xl text-white shadow-5xl relative z-2 border border-opacity-30 border-r-0 border-b-0 backdrop-filter backdrop-blur-sm' >
             <Grid container spacing={1} className='py-8'>
               <Grid item xs={1}>
                 Server Name
                 <br />
-                <TextField label="Server Search" value={serverSearch} color="secondary" onChange={(event) => setServerSearch(event.target.value)} />
+                <TextField label="Server Search" value={serverSearch} color="primary" onChange={(event) => setServerSearch(event.target.value)} />
               </Grid>
               <Grid item xs={2}>
                 Finger Print
                 <br />
-                <TextField label="FingerPrint Search" value={thumbPrintSearch} color="secondary" onChange={(event) => seThumbPrintSearch(event.target.value)} />
+                <TextField label="FingerPrint Search" value={thumbPrintSearch} color="primary" onChange={(event) => seThumbPrintSearch(event.target.value)} />
               </Grid>
               <Grid item xs={2}>
                 KeyStore Location
                 <br />
-                <TextField label="KeyStore Search" value={keyStoreLocation} color="secondary" onChange={(event) => setKeyStoreLocation(event.target.value)} />
+                <TextField label="KeyStore Search" value={keyStoreLocation} color="primary" onChange={(event) => setKeyStoreLocation(event.target.value)} />
               </Grid>
               <Grid item xs={1}>
                 Common Name
                 <br />
-                <TextField label="CN Search" value={cnSearch} color="secondary" onChange={(event) => setCnSearch(event.target.value)} />
+                <TextField label="CN Search" value={cnSearch} color="primary" onChange={(event) => setCnSearch(event.target.value)} />
               </Grid>
               <Grid item xs={1}>
                 Environment
@@ -323,12 +325,12 @@ const Modify = ({certs}) => {
               <Grid item xs={2}>
                 ITSI
                 <br />
-                <TextField label="ITSI Search" value={itsiSearch} color="secondary" onChange={(event) => setItsiSearch(event.target.value)} />
+                <TextField label="ITSI Search" value={itsiSearch} color="primary" onChange={(event) => setItsiSearch(event.target.value)} />
               </Grid>
               <Grid item xs={1}>
                 SF Group
                 <br />
-                <TextField label="SF Group Search" value={sfGroupSearch} color="secondary" onChange={(event) => setSfGroupSearch(event.target.value)} />
+                <TextField label="SF Group Search" value={sfGroupSearch} color="primary" onChange={(event) => setSfGroupSearch(event.target.value)} />
               </Grid>
               <Grid item xs={1}>
                 Expiry Date

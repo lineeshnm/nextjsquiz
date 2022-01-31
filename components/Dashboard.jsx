@@ -15,6 +15,7 @@ import RateReviewIcon from '@mui/icons-material/RateReview';
 import InfoIcon from '@mui/icons-material/Info';
 import Tooltip from '@mui/material/Tooltip';
 import CertificateCard from './CertificateCard';
+import Background from './Background';
 // import MonthPicker from '@mui/lab/MonthPicker';
 const APP_NAME = process.env.APP_NAME
 const URL = process.env.URL
@@ -152,34 +153,35 @@ export default function Dashboard({certs, pageName}) {
 
   return (
     <div className='flex-grow px-12'>
-      <div className="text-center text-4xl font-semibold text-white mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">{`${APP_NAME} - ${pageName}`}</div>
+      <div className="text-center text-4xl font-semibold text-white mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-opacity-10">{`${APP_NAME} - ${pageName}`}</div>
       {
         view && viewCert && (
           <CertificateCard cert={viewCert} button={true} edit={false} />
         )
       }
-      <div >
-        <Card sx={{ minWidth: 275 }} className='px-12' >
-        <Grid container spacing={1} className='py-8'>
-        <Grid item xs={1}>
+      <div className='h-screen w-full relative overflow-hidden flex justify-center py-6'>
+        <Background />
+        <Card sx={{ minWidth: 275 }} className='px-12 bg-white bg-opacity-10 rounded-2xl text-white shadow-5xl relative z-2 border border-opacity-30 border-r-0 border-b-0 backdrop-filter backdrop-blur-sm' >
+        <Grid container spacing={1} className='py-8 text-white'>
+        <Grid item xs={1} >
           Server Name
           <br />
-          <TextField label="Server Search" color="secondary" onChange={(event) => setServerSearch(event.target.value)} />
+          <TextField label="Server Search" color="primary" onChange={(event) => setServerSearch(event.target.value)} />
         </Grid>
         <Grid item xs={2}>
           Finger Print
           <br />
-          <TextField label="FingerPrint Search" color="secondary" onChange={(event) => setThumbPrint(event.target.value)} />
+          <TextField label="FingerPrint Search" color="primary" onChange={(event) => setThumbPrint(event.target.value)} />
         </Grid>
         <Grid item xs={2}>
           KeyStore Location
           <br />
-          <TextField label="KeyStore Search" color="secondary" onChange={(event) => setKeyStoreLocation(event.target.value)} />
+          <TextField label="KeyStore Search" color="primary" onChange={(event) => setKeyStoreLocation(event.target.value)} />
         </Grid>
         <Grid item xs={1}>
           Common Name
           <br />
-          <TextField label="CN Search" color="secondary" onChange={(event) => setCnSearch(event.target.value)} />
+          <TextField label="CN Search" color="primary" onChange={(event) => setCnSearch(event.target.value)} />
         </Grid>
         <Grid item xs={1}>
           Environment
@@ -202,12 +204,12 @@ export default function Dashboard({certs, pageName}) {
         <Grid item xs={2}>
           ITSI
           <br />
-          <TextField label="ITSI Search" color="secondary" onChange={(event) => setItsiSearch(event.target.value)} />
+          <TextField label="ITSI Search" color="primary" onChange={(event) => setItsiSearch(event.target.value)} />
         </Grid>
         <Grid item xs={1}>
           SF Group
           <br />
-          <TextField label="SF Group Search" color="secondary" onChange={(event) => setSfGroupSerach(event.target.value)} />
+          <TextField label="SF Group Search" color="primary" onChange={(event) => setSfGroupSerach(event.target.value)} />
         </Grid>
         <Grid item xs={1}>
           Expiry Date
@@ -233,46 +235,46 @@ export default function Dashboard({certs, pageName}) {
             <div key={index} >
               <Box sx={{ flexGrow: 1 }}
               >
-                <Grid container spacing={1}>
+                <Grid container spacing={1} className='py-1 text-white'>
                   <Grid item xs={1}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
+                    <Typography sx={{ fontSize: 14 }}  className='px-2'>
                       <Link href={`/modify/${cert._id}`}>
                         <a>{cert.serverName}</a>
                       </Link>
                     </Typography>
                   </Grid>
                   <Grid item xs={2}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
+                    <Typography sx={{ fontSize: 14 }} gutterBottom className='px-2'>
                       {cert.thumbPrint}
                     </Typography>
                   </Grid>
                   <Grid item xs={2}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
+                    <Typography sx={{ fontSize: 14 }}  gutterBottom className='px-2'>
                       {cert.keyStoreLocation}
                     </Typography>
                   </Grid>
                   <Grid item xs={1}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
+                    <Typography sx={{ fontSize: 14 }}  gutterBottom className='px-2'>
                       {cert.commonName}
                     </Typography>
                   </Grid>
                   <Grid item xs={1}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
+                    <Typography sx={{ fontSize: 14 }}  gutterBottom className='px-2'>
                       {cert.environment}
                     </Typography>
                   </Grid>
                   <Grid item xs={2}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
+                    <Typography sx={{ fontSize: 14 }}  gutterBottom className='px-2'>
                       {cert.itServiceInstance}
                     </Typography>
                   </Grid>
                   <Grid item xs={1}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
+                    <Typography sx={{ fontSize: 14 }}  gutterBottom className='px-2'>
                       {String(cert.sfGroup)}
                     </Typography>
                   </Grid>
                   <Grid item xs={1}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
+                    <Typography sx={{ fontSize: 14 }}  className='px-2'>
                       {cert.validTo}
                     </Typography>
                   </Grid>

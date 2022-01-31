@@ -26,7 +26,7 @@ export default function Home({certs}) {
 
   return (
     <div className='flex-grow px-12' >
-      <div className="text-center text-4xl font-semibold text-white mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+      <div className="text-center text-4xl font-semibold text-white mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 tracking-widest">
       {`${APP_NAME} - Review`}
       </div>
       <EnhancedTable rows={rows} />

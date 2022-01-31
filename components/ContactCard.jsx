@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 const ContactCard = () => {
   return (
     <div className='flex justify-center w-full py-6'>
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 345 }} className='bg-white bg-opacity-10 rounded-2xl text-white shadow-5xl relative z-2 border border-opacity-30 border-r-0 border-b-0 backdrop-filter backdrop-blur-sm'>
         <Image
             height={500}
             width={500}

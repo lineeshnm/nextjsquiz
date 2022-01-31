@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
     return (
         <footer className="w-full h-24 border-t">
-          <div className='flex justify-around mt-6'>
+          <div className='flex justify-around mt-6 text-2xl text-white tracking-widest'>
             <a
               className="flex justify-center"
               href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"

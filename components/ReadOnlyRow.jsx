@@ -13,44 +13,44 @@ const ReadOnlyRow = ({ cert , handleEditClick, handleDeleteClick, modified }) =>
     <div key={cert._id} >
         <Box sx={{ flexGrow: 1 }}
         >
-            <Grid container spacing={2}>
+            <Grid container spacing={2} className='text-white'>
                 <Grid item xs={1}>
-                    <Typography sx={{ fontSize: 14, color: (modified) ? "blue" : "blak" }} color="text.secondary" gutterBottom className='px-2'>
+                    <Typography sx={{ fontSize: 14, color: (modified) ? "red" : "white" }} className='px-2'>
                         {cert.serverName}
                     </Typography>
                 </Grid>
                 <Grid item xs={2}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
+                    <Typography sx={{ fontSize: 14 }} className='px-2'>
                         {cert.thumbPrint}
                     </Typography>
                 </Grid>
                 <Grid item xs={2}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
+                    <Typography sx={{ fontSize: 14 }} className='px-2'>
                         {cert.keyStoreLocation}
                     </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
+                    <Typography sx={{ fontSize: 14 }} className='px-2'>
                         {cert.commonName}
                     </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
+                    <Typography sx={{ fontSize: 14 }} className='px-2'>
                         {cert.environment}
                     </Typography>
                 </Grid>
                 <Grid item xs={2}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
+                    <Typography sx={{ fontSize: 14 }} className='px-2'>
                         {cert.itServiceInstance}
                     </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
+                    <Typography sx={{ fontSize: 14 }} className='px-2'>
                         {cert.sfGroup}
                     </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>
+                    <Typography sx={{ fontSize: 14 }} className='px-2'>
                         {String(cert.validTo)}
                     </Typography>
                 </Grid>

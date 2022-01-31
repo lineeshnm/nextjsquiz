@@ -7,8 +7,8 @@ import Tooltip from '@mui/material/Tooltip';
 
 const CertificateCard = ({cert, button, edit}) => {
   return (
-    <>
-    <Card sx={{ minWidth: 275 }} variant="outlined" className='px-12' >
+    <div className='py-6'>
+    <Card sx={{ minWidth: 275 }} variant="outlined" className='px-12 bg-white bg-opacity-10 rounded-2xl text-white shadow-5xl relative z-2 border border-opacity-30 border-r-0 border-b-0 backdrop-filter backdrop-blur-sm' >
         <Grid container spacing={1} className='pt-8 pb-2'>
             <Grid item xs={1}>
                 Server Name
@@ -161,7 +161,7 @@ const CertificateCard = ({cert, button, edit}) => {
         </Grid>
     </Card>
     <div className='py-2'></div>
-    </>
+    </div>
   )
 };
 

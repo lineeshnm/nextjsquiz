@@ -15,6 +15,7 @@ import Button from '@mui/material/Button';
 import Router , { useRouter } from 'next/router';
 import { isAuth } from '../../actions/auth';
 import CertificateCard from '../../components/CertificateCard';
+import Background from '../../components/Background';
 
 const APP_NAME = process.env.APP_NAME
 const URL = process.env.URL
@@ -181,18 +182,20 @@ const Server = ({cert}) => {
 
     return (
         <div className='flex-grow px-12'>
-            <div className="text-center text-4xl font-semibold text-white mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+            <div className="text-center text-4xl font-semibold text-white mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 tracking-widest">
                 {APP_NAME} - Update Single Certificate
             </div>
+            <div className='h-screen w-full relative overflow-hidden flex justify-center py-6'>
+                <Background />
             { 
                 !isAuth() && cert && (
-                    <Card sx={{ minWidth: 275 }} className='px-12 py-20' >
+                    <div sx={{ minWidth: 275 }} className='h-screen w-full px-12 mb-8 bg-white bg-opacity-10 rounded-2xl text-white shadow-5xl relative z-2 border border-opacity-30 border-r-0 border-b-0 backdrop-filter backdrop-blur-sm'>
                         <Box sx={{ flexGrow: 1 }} >
                             <CertificateCard cert={cert} button={false} edit={false} />
                             <Grid container spacing={1} className='py-20'>
                                 <Grid item xs={2}>
                                     <Stack direction="row" spacing={1} alignItems="center">
-                                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>Renew Certificate ?</Typography>
+                                        <Typography sx={{ fontSize: 14 }} className='px-2'>Renew Certificate ?</Typography>
                                         <FormControlLabel control={<Switch checked={renew} />} label={renew? "Yes": "No"} onChange={(event) => setRenew(event.target.checked)}/>
                                     </Stack>
                                 </Grid>
@@ -201,19 +204,19 @@ const Server = ({cert}) => {
                                     <>
                                         <Grid item xs={2}>
                                             <Stack direction="row" spacing={1} alignItems="center">
-                                                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>Change Request</Typography>
-                                                <TextField value={crNumber} placeholder="Change Number" color="secondary" error={errors.crNumber ? true: false} onChange={(event) => setCrNumber(event.target.value)} />
+                                                <Typography sx={{ fontSize: 14 }} className='px-2'>Change Request</Typography>
+                                                <TextField value={crNumber} placeholder="Change Number" color="primary" error={errors.crNumber ? true: false} onChange={(event) => setCrNumber(event.target.value)} />
                                             </Stack>
                                         </Grid>
                                         <Grid item xs={2}>
                                             <Stack direction="row" spacing={1} alignItems="center">
-                                                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>Change Task</Typography>
-                                                <TextField value={cTask} placeholder="Change Task Number" color="secondary" error={errors.cTask ? true: false} onChange={(event) => setCTask(event.target.value)} />
+                                                <Typography sx={{ fontSize: 14 }} className='px-2'>Change Task</Typography>
+                                                <TextField value={cTask} placeholder="Change Task Number" color="primary" error={errors.cTask ? true: false} onChange={(event) => setCTask(event.target.value)} />
                                             </Stack>
                                         </Grid>
                                         <Grid item xs={2}>
                                             <Stack direction="row" spacing={1} alignItems="center">
-                                                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>Target Date</Typography>
+                                                <Typography sx={{ fontSize: 14 }} className='px-2'>Target Date</Typography>
                                                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                                                     <Stack spacing={3}>
                                                     <DesktopDatePicker
@@ -231,30 +234,32 @@ const Server = ({cert}) => {
                                 }
                                 <Grid item xs={2}>
                                     <Stack direction="row" spacing={1} alignItems="center">
-                                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>Approver Name</Typography>
-                                        <TextField value={approver} placeholder="Enter Your Name" color="secondary" error={errors.approver ? true: false} onChange={(event) => setApprover(event.target.value)} />
+                                        <Typography sx={{ fontSize: 14 }} className='px-2'>Approver Name</Typography>
+                                        <TextField value={approver} placeholder="Enter Your Name" color="primary" error={errors.approver ? true: false} onChange={(event) => setApprover(event.target.value)} />
                                     </Stack>
                                 </Grid>
                                 <Grid item xs={2}>
                                     <Stack direction="row" spacing={1} alignItems="center">
-                                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>Are you Sure?</Typography>
+                                        <Typography sx={{ fontSize: 14 }} className='px-2'>Are you Sure?</Typography>
                                         <Button variant="contained" onClick={handleSubmit} className='bg-blue-400' >Confirm</Button>
                                     </Stack>
                                 </Grid>
                             </Grid>
                         </Box>
-                    </Card>
+                    </div>
                 )
 
             }
             { isAuth() && cert && (
-                    <Card sx={{ minWidth: 275 }} className='px-12 py-20' >
+                    <div sx={{ minWidth: 275 }} className='h-screen w-full px-12 mb-8 bg-white bg-opacity-10 rounded-2xl text-white shadow-5xl relative z-2 border border-opacity-30 border-r-0 border-b-0 backdrop-filter backdrop-blur-sm' >
                         <Box sx={{ flexGrow: 1 }} >
+                            <div className='py-6'>
                             <CertificateCard cert={cert} button={false} edit={true} />
+                            </div>
                             <Grid container spacing={1} className='py-20'>
                                 <Grid item xs={2}>
                                     <Stack direction="row" spacing={1} alignItems="center">
-                                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>Certificate Renewed?</Typography>
+                                        <Typography sx={{ fontSize: 14 }} className='px-2'>Certificate Renewed?</Typography>
                                         <FormControlLabel control={<Switch checked={renewed} />} label={renewed? "Yes": "No"} onChange={(event) => setRenewed(event.target.checked)}/>
                                     </Stack>
                                 </Grid>
@@ -263,7 +268,7 @@ const Server = ({cert}) => {
                                     <>
                                         <Grid item xs={2}>
                                             <Stack direction="row" spacing={1} alignItems="center">
-                                                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>Renewed Date</Typography>
+                                                <Typography sx={{ fontSize: 14 }} className='px-2'>Renewed Date</Typography>
                                                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                                                     <Stack spacing={3}>
                                                     <DesktopDatePicker
@@ -279,7 +284,7 @@ const Server = ({cert}) => {
                                         </Grid>
                                         <Grid item xs={2}>
                                             <Stack direction="row" spacing={1} alignItems="center">
-                                                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>New Expiry Date</Typography>
+                                                <Typography sx={{ fontSize: 14 }} className='px-2'>New Expiry Date</Typography>
                                                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                                                     <Stack spacing={3}>
                                                     <DesktopDatePicker
@@ -295,23 +300,24 @@ const Server = ({cert}) => {
                                         </Grid>
                                         <Grid item xs={2}>
                                             <Stack direction="row" spacing={1} alignItems="center">
-                                                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>Confirmed By</Typography>
-                                                <TextField value={renewedBy} placeholder="Enter Your Name" color="secondary" error={errors.renewedBy ? true: false} onChange={(event) => setRenewedBy(event.target.value)} />
+                                                <Typography sx={{ fontSize: 14 }} className='px-2'>Confirmed By</Typography>
+                                                <TextField value={renewedBy} placeholder="Enter Your Name" color="primary" error={errors.renewedBy ? true: false} onChange={(event) => setRenewedBy(event.target.value)} />
                                             </Stack>
                                         </Grid>
                                     </>
                                 }
                                 <Grid item xs={2}>
                                     <Stack direction="row" spacing={1} alignItems="center">
-                                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom className='px-2'>Are you Sure?</Typography>
+                                        <Typography sx={{ fontSize: 14 }} className='px-2'>Are you Sure?</Typography>
                                         <Button variant="contained" onClick={handleSubmit} className='bg-blue-400' >Update</Button>
                                     </Stack>
                                 </Grid>
                             </Grid>
                         </Box>
-                    </Card>
+                    </div>
                 )
             }
+            </div>
         </div>
     )
 }
