@@ -6,16 +6,22 @@ module.exports = {
   theme: {
     extend: {
       width: {
+        '100-r': '100rem',
         '80-r': '80rem',
+        '60-r': '60rem',
         '40-r': '40rem',
         '35-r': '35rem',
-        '30-r': '30rem'
+        '30-r': '30rem',
+        '26-r': '26rem'
       },
       height: {
+        '100-r': '100rem',
         '80-r': '80rem',
+        '60-r': '60rem',
         '40-r': '40rem',
         '35-r': '35rem',
-        '30-r': '30rem'
+        '30-r': '30rem',
+        '26-r': '26rem'
       },
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif']

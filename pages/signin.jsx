@@ -3,7 +3,6 @@ import { signin, authenticate, isAuth } from '../actions/auth';
 import { useRouter } from 'next/router';
 import Tilt from 'react-parallax-tilt';
 import Link from 'next/link';
-import Background from '../components/Background';
 const APP_NAME = process.env.APP_NAME
 
 const SignIn = () => {
@@ -55,8 +54,7 @@ const SignIn = () => {
     const signinForm = () => {
         return (
             // <div className="bg-gray-900 h-screen w-full relative overflow-hidden flex justify-center items-center">
-            <div className='h-screen w-full relative overflow-hidden flex justify-center items-center'>
-                <Background />
+            <div className='w-full relative flex justify-center items-center py-12'>
                 <Tilt>
                     <div className="container h-96 w-96 bg-white bg-opacity-10 rounded-2xl shadow-5xl relative z-2 border border-opacity-30 border-r-0 border-b-0 backdrop-filter backdrop-blur-sm">
                         <form className='h-full flex flex-col justify-evenly items-center' onSubmit={handleSubmit} > 
@@ -83,13 +81,17 @@ const SignIn = () => {
     };
 
     return (
-        <div className='flex-grow px-12'>
-            <div className="text-center text-4xl font-semibold text-white mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 tracking-widest">{`${APP_NAME} - Signin`}</div>
-            {showError()}
-            {showLoading()}
-            {showMessage()}
-            {showForm && signinForm()}
-        </div>
+        <>
+            <div className='flex-grow px-12 pt-40 w-screen'>
+                <div className="text-center h-full text-4xl font-semibold py-2 glass-item">
+                    {APP_NAME} - SignIn
+                </div>
+                {showError()}
+                {showLoading()}
+                {showMessage()}
+                {showForm && signinForm()}
+            </div>
+        </>
     );
 };
 

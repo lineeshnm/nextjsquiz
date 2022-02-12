@@ -41,18 +41,18 @@ const updatedatabase = () => {
     }
 
     return (
-        <div className='flex-grow px-12'>
-            <div className="text-center text-4xl font-semibold text-white mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 tracking-widest">
-                {`${APP_NAME} - Update CSV to Database`}
+        <div className='flex-grow px-12 pt-40 w-screen'>
+            <div className="text-center h-full text-4xl font-semibold py-2 glass-item">
+            {APP_NAME} - Update CSV to Database
             </div>
             {
                 !isAuth() && (
                 <ContactCard />
                 )
             }
-            <div className='h-screen w-full relative overflow-hidden flex justify-center py-6'>
+            <div className='flex justify-center py-6'>
                 <Background />
-                <div className='flex flex-col'>
+                <div className='w-full flex flex-col'>
             {
                 isAuth() && (
                     <div className='h-40 w-auto mt-6 py-8 bg-white bg-opacity-10 rounded-2xl text-white shadow-5xl relative z-2 border border-opacity-30 border-r-0 border-b-0 backdrop-filter backdrop-blur-sm'>
@@ -106,74 +106,74 @@ const updatedatabase = () => {
                     <Box sx={{ flexGrow: 1 }} >
                         <Grid container spacing={1} className='py-8'>
                             <Grid item xs={1}>
-                                Server Name
-                            </Grid>
-                            <Grid item xs={2}>
-                                Finger Print
-                            </Grid>
-                            <Grid item xs={2}>
-                                KeyStore Location
-                            </Grid>
-                            <Grid item xs={2}>
-                                Common Name
+                                Quiz Name
                             </Grid>
                             <Grid item xs={1}>
-                                Environment
-                            </Grid>
-                            <Grid item xs={2}>
-                                ITSI
+                                Link
                             </Grid>
                             <Grid item xs={1}>
-                                SF Group
+                                startDate
                             </Grid>
                             <Grid item xs={1}>
-                                Expiry Date
+                                endDate
+                            </Grid>
+                            <Grid item xs={1}>
+                                timedGame
+                            </Grid>
+                            <Grid item xs={1}>
+                                readyToPlay
+                            </Grid>
+                            <Grid item xs={1}>
+                                createdBy
+                            </Grid>
+                            <Grid item xs={5}>
+                                description
                             </Grid>
                         </Grid>
             
-                        {data.map((cert) => (
-                            <div key={cert.thumbPrint} >
+                        {data.map((quiz) => (
+                            <div key={quiz.slug} >
                             <Box sx={{ flexGrow: 1 }}
                             >
                                 <Grid container spacing={1}>
                                 <Grid item xs={1}>
                                     <Typography sx={{ fontSize: 14 }} className='px-2'>
-                                        {cert.serverName}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={2}>
-                                    <Typography sx={{ fontSize: 14 }} className='px-2'>
-                                    {cert.thumbPrint}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={2}>
-                                    <Typography sx={{ fontSize: 14 }} className='px-2'>
-                                    {cert.keyStoreLocation}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={2}>
-                                    <Typography sx={{ fontSize: 14 }} className='px-2'>
-                                    {cert.commonName}
+                                        {quiz.quizName}
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={1}>
                                     <Typography sx={{ fontSize: 14 }} className='px-2'>
-                                    {cert.environment}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={2}>
-                                    <Typography sx={{ fontSize: 14 }} className='px-2'>
-                                    {cert.itServiceInstance}
+                                    {quiz.slug}
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={1}>
                                     <Typography sx={{ fontSize: 14 }} className='px-2'>
-                                    {cert.sfGroup}
+                                    {quiz.startDate}
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={1}>
                                     <Typography sx={{ fontSize: 14 }} className='px-2'>
-                                    {cert.validTo.toString()}
+                                    {quiz.endDate}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={1}>
+                                    <Typography sx={{ fontSize: 14 }} className='px-2'>
+                                    {quiz.timedGame.toString()}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={1}>
+                                    <Typography sx={{ fontSize: 14 }} className='px-2'>
+                                    {quiz.readyToPlay.toString()}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={1}>
+                                    <Typography sx={{ fontSize: 14 }} className='px-2'>
+                                    {quiz.createdBy}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={5}>
+                                    <Typography sx={{ fontSize: 14 }} className='px-2'>
+                                    {quiz.description}
                                     </Typography>
                                 </Grid>
                                 </Grid>

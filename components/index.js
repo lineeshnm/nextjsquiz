@@ -2,4 +2,9 @@ export { default as Footer } from './Footer';
 export { default as Header } from './Header';
 export { default as Layout } from './Layout';
 export { default as Loader } from './Loader';
-export { default as EnhancedTable } from './EnhancedTable';
+export { default as ContactCard } from './ContactCard';
+export { default as Background } from './Background';
+export { default as QuestionCardMin } from './QuestionCardMin';
+export { default as QuestionCard } from './QuestionCard'
+export { default as QuizLink } from './QuizLink'
+export { default as CountDownTimer } from './CountDownTimer'

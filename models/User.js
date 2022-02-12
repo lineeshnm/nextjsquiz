@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const Cert = require('./Cert')
+const Quiz = require('./Quiz')
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -55,10 +55,10 @@ const userSchema = new mongoose.Schema({
     timestamps: true
 })
 
-userSchema.virtual('Cert', {
-    ref: 'Cert',
+userSchema.virtual('Quiz', {
+    ref: 'Quiz',
     localField: '_id',
-    foreignField: 'renewdBy'
+    foreignField: 'createdBy'
 })
 
 userSchema.methods.toJSON =  function () {
@@ -83,7 +83,7 @@ userSchema.methods.generateAuthToken = async function () {
 userSchema.statics.findByCredenticals =  async (email, password) => {
     // console.log({password})
     const user = await User.findOne({ email })
-    // console.log(user)
+    console.log(user)
     if (!user) {
         throw new Error('User not found with this credentials')
     }
@@ -105,10 +105,10 @@ userSchema.pre('save', async function (next) {
     next()
 })
 
-// delete User Cert when user is removed
+// delete User Quiz when user is removed
 userSchema.pre('remove', async function (next) {
     const user = this
-    await Cert.deleteMany({renewdBy: user._id})
+    await Quiz.deleteMany({renewdBy: user._id})
     next()
 })
 

@@ -17,11 +17,12 @@ export default async (req, res) => {
             }
             break;
         case 'POST':
+            // console.log(req.body)
             try {
                 const user = await User.findByCredenticals(req.body.email, req.body.password)
-                // console.log({user})
+                console.log({user})
                 const token = await user.generateAuthToken()
-                // console.log({token})
+                console.log({token})
                 res.status(201).json({ success: true, user, token })
             } catch (error) {
                 res.status(400).json({ success: false, error });

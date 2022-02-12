@@ -2,54 +2,54 @@ import React from 'react'
 import Link from 'next/link'
 import { signout, isAuth } from '../actions/auth';
 import { useRouter } from 'next/router';
-
-const navMenuItems = ['ToRenew', 'NotToRenew', 'Renewed']
+const APP_NAME = process.env.APP_NAME
 
 const Header = () => {
     const router = useRouter();
     return (
-        <div className="flex-grow px-12 lg:flex-row overflow-hidden max-w-[95%]  m-12 bg-white bg-opacity-10 rounded-2xl shadow-5xl relative z-2 border border-opacity-30 border-r-0 border-b-0 backdrop-filter backdrop-blur-sm">
-            <div className="flex justify-between border-b w-full border-blue-400 py-8 ">
+        <div className='fixed left-12 right-12 top-5 bg-white bg-opacity-10 rounded-2xl shadow-5xl z-2 border border-opacity-30 border-r-0 border-b-0 backdrop-filter backdrop-blur-sm'>
+            <div className="flex justify-between w-full py-8 px-8">
                 <div className="md:float-left block">
                     <Link href="/">
-                        <span className="cursor-pointer font-bold text-4xl text-white drop-shadow-2xl">Certificate Portal</span>
+                        <a className="cursor-pointer font-bold text-4xl text-white drop-shadow-2xl">{APP_NAME}</a>
                     </Link>
                 </div>
                 <div className="hidden md:float-left md:contents">
-                <Link key='dashboard' href={`/`}>
-                    <span className="header-item">
-                        Dashboard
-                    </span>
-                </Link>
-                {navMenuItems.map((NavMenu, index) => (
-                    <Link key={index} href={`/${NavMenu.toLowerCase()}`}><span className="header-item">{NavMenu}</span></Link>
-                ))}
-                <Link key='review' href={`/bulk`}>
-                    <span className="header-item">
-                        Bulk Update
-                    </span>
-                </Link>
-                { isAuth() && (
-                    <>
-                        <Link key='modify' href={`/modify`}>
-                            <span className="header-item">
-                                DB Modify
-                            </span>
+                    <Link key='dashboard' href={`/`}>
+                        <a className="header-item">
+                            Home
+                        </a>
+                    </Link>
+                    <Link key='quizes' href={`/quizes`}>
+                        <a className="header-item">
+                            Quizes
+                        </a>
+                    </Link>
+                    { isAuth() && (
+                    <>  
+                        <Link key='createquiz' href={`/createquiz`}>
+                            <a className="header-item">
+                                Build a Quiz
+                            </a>
                         </Link>
                         <Link key='uploadtoDB' href={`/uploadtodb`}>
-                            <span className="header-item">
+                            <a className="header-item">
                                 UploadtoDB
-                            </span>
+                            </a>
                         </Link>
                     </>
-                )}
+                    )}
                 </div>
                 {
                     !isAuth() && (
                         <div className="md:float-right block">
-                            <Link href="/signin">
-                                <span className="header-item text-2xl">Sign In</span>
+                            <Link href="/signup">
+                                <a className="header-item text-2xl">SignUp</a>
                             </Link>
+                            <Link href="/signin">
+                                <a className="header-item text-2xl">SignIn</a>
+                            </Link>
+
                         </div>
                     )
                 }
@@ -57,10 +57,10 @@ const Header = () => {
                     isAuth() && (
                         <div className="md:float-right block">
                             <Link href="/">
-                                <span 
+                                <a 
                                     className="header-item text-2xl" 
                                     onClick={() => signout(() => router.push(`/`))}
-                                >Logout</span>
+                                >Sign Out</a>
                             </Link>
                         </div>
                     )

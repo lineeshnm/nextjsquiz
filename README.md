@@ -1,44 +1,26 @@
-# Middleware certificate application
-
-This is created for middleware certificate renewal
-## First commit
-
-Initial commit of the project without any code. Just a boiler plate. 
-
-## Second commit
-
-After the initial dashboard are ready. Which includes main dashboard, toRenew Dashboard, not to renew Dashboard and certificate dashboard which utilizes the material UI Table.
-## Third commit
-
-This includes the authentication mechanism. where users need to login. This is mainly intented for middleware admininstrators
-# certapp
-
-## TODO: For Admin users 
-
-### Single Entry modification - completed
-### Single Entry renewal update - Completed
-## TODO: tally the dashboard+torenew+nottorenew+renewed = total data in db - Completed
-## TODO: To Renew, NotTo renew should not have the renewed Items in list. - completed
-## TODO: For normal users - completed
-### Bulk confirmation page - Completed
-#### Bulk update API and calling it - Completed.
-#### Loged in user and normal user will need two different views/edit option - completed
-
-### Bulk Entry renewal update - Completed
-## TODO: Need to remove Signup from every page or rename signup page to some other name and create a banner in signup - completed
-#### Display most of the fields - completed
-## TODO: Protect admin pages - completed
-#### Edit and delete button - completed
-#### Delete function - done
-
-## Dashboard page - View details - Done
-## Singe Modify page need to include all details- Done
-#### Cancel Button - function - completed
-#### Edit most of the fields - completed
+# Certificate App
+## 404 - page not found - done
+### Contact Card - Email/Chat to implement
+## AdminSignUp page - done
+## Signin Page - Done
+## Create Quiz
+### Question form validation completed. 
+### Delete button for Quiz Review - Completed
+### Quiz Control Form - Time Picker not showing the time - completed
+#### uploadQuiz - Question Number, Date,Time Combination - completed
+### Display details only if required. - done
+### Big screen Questions - done
+## Quizes page for active Quizes - with link to slug - done
+## Quiz page for individual Quizes - right answer/wrong answer Modal with - done
+### Help button to display a hint
+### Timer running - done
+### Stop the Quiz gracefully - done
+### Points based on timer - done
+# TODO: 
+### 50-50 Options
+### Hint disable if used 2 times. 
+## Update to DB page
+### Randomize the Questions
+## Front page with Features
 
 
-### DB modification for admin users
-### Modal to Delete confirmation
-#### Confirm to Upload to DB 
-#### Filter option in Bulk Update
-## TODO: Filter the renewed, to renew list based on how many days to renew
