@@ -2,7 +2,8 @@
 module.exports = {
   reactStrictMode: true,
   env: {
-    URL: process.env.NODE_ENV === 'production' ? process.env.VERCEL_URL : 'http://localhost:3000',
+    URL: process.env.NODE_ENV === 'production' ? 'https://lineeshquiz.vercel.app' : 'http://localhost:3000',
+    MONGODB_URI : "mongodb+srv://taskapp:taskapptaskapp@cluster0.ejphg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     MONGODB_DB: "nextjsquiz",
     APP_NAME: "Lineesh QuizApp"
   }
