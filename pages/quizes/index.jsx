@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { QuizLink } from '../../components';
 import Typography from '@mui/material/Typography';
+import { getQuizes } from '../../utils/dbUtils';
 
 const APP_NAME = process.env.APP_NAME
-const URL = process.env.URL
 
-const Index = ({quizes}) => {
-    console.log({URL})
+const Index = () => {
+
+    const [quizes, setQuizes] = useState([]);
+
+    useEffect(() => {
+        getQuizes().then(data => {
+            console.log({ data })
+            setQuizes(data)
+        })
+        return () => {
+            console.log("unmounted from useEffect")
+        };
+    }, []);
+
     const compareDate = (date) => {
         const today = new Date().toISOString().split('T')[0].split('-')
         const quizday = date.split('T')[0].split('-')
@@ -71,22 +83,3 @@ const Index = ({quizes}) => {
 }
 
 export default Index;
-
-
-export const getStaticProps = async (context) => {
-    console.log({URL})
-
-    const res = await fetch(`${URL}/api/quizes/`)
-    const data = await res.json()
-    console.log({data})
-    if (!data.success) {
-      return {
-        notFound: true,
-        revalidate: 10
-      }
-    }
-    return {
-      props: { quizes: data.data }, // will be passed to the page component as props
-      revalidate: 10
-    }
-  }
