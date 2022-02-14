@@ -6,7 +6,7 @@ const APP_NAME = process.env.APP_NAME
 const URL = process.env.URL
 
 const Index = ({quizes}) => {
-    
+    console.log({URL})
     const compareDate = (date) => {
         const today = new Date().toISOString().split('T')[0].split('-')
         const quizday = date.split('T')[0].split('-')
@@ -74,10 +74,11 @@ export default Index;
 
 
 export const getStaticProps = async (context) => {
+    console.log({URL})
 
     const res = await fetch(`${URL}/api/quizes/`)
     const data = await res.json()
-    // console.log({data})
+    console.log({data})
     if (!data.success) {
       return {
         notFound: true,
