@@ -22,5 +22,7 @@
 ## Update to DB page
 ### Randomize the Questions
 ## Front page with Features
+# Migrate to MongoDB Online
+# Deploy it in versal
 
 

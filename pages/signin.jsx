@@ -6,8 +6,8 @@ import Link from 'next/link';
 const APP_NAME = process.env.APP_NAME
 
 const SignIn = () => {
-    const [email, setEmail] = useState('lineesh@gmail.com');
-    const [password, setPassword] = useState('acbd1234');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
