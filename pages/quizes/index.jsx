@@ -75,17 +75,21 @@ export default Index;
 
 export const getStaticProps = async (context) => {
 
-    const res = await fetch(`${URL}/api/quizes/`)
-    const data = await res.json()
-    // console.log({data})
-    if (!data.success) {
-      return {
-        notFound: true,
-        revalidate: 10
-      }
-    }
+    // const res = await fetch(`${URL}/api/quizes/`)
+    // const data = await res.json()
+    // // console.log({data})
+    // if (!data.success) {
+    //   return {
+    //     notFound: true,
+    //     revalidate: 10
+    //   }
+    // }
+    // return {
+    //   props: { quizes: data.data }, // will be passed to the page component as props
+    //   revalidate: 10
+    // }
     return {
-      props: { quizes: data.data }, // will be passed to the page component as props
-      revalidate: 10
-    }
+            notFound: true,
+            revalidate: 10
+          }
   }
