@@ -70,10 +70,10 @@ const Index = () => {
                                     }
                                 })}
                             </div>
-                            <div className='h-24 sm:h-0'></div>
-                            <div className='h-24 sm:h-0'></div>
-                            <div className='h-24 sm:h-0'></div>
-                            <div className='h-24 sm:h-0'></div>
+                            <div className='grid-placeholder'></div>
+                            <div className='grid-placeholder'></div>
+                            <div className='grid-placeholder'></div>
+                            <div className='grid-placeholder'></div>
                         </div>
                     </>
                 )

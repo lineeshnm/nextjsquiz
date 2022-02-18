@@ -107,7 +107,7 @@ const QuizPage = ({quiz}) => {
             <div className='grid-item'>
               <div className='grid-item-h4'>Quiz Details</div>
               <div className='grid-item-h6'>{quiz.quizName}</div>
-              <div className='h-20 lg:h-2-0 md:h-16 sm:h-12 text-center pb-4'>
+              <div className='h-12 lg:h-20 md:h-16 sm:h-12 text-center pb-4'>
               <Tooltip title="More details">
                 <IconButton onClick={handleInfoOpen} className='p-0'>
                   <InfoIcon variant="contained" className='grid-icon-button bg-blue-500 hover:bg-blue-700' />
@@ -122,7 +122,7 @@ const QuizPage = ({quiz}) => {
                 <div className='grid-item-body2'>Timed Game?: {quiz.timedGame.toString()}</div>
                 <div className='grid-item-body2'>Live Game?: {quiz.readyToPlay.toString()}</div>
               </div>
-              <div className='h-20 lg:h-2-0 md:h-16 sm:h-12 text-center pb-4' >
+              <div className='h-12 lg:h-20 md:h-16 sm:h-12 text-center pb-4' >
                 <Tooltip title="Start the Quiz">
                   <IconButton onClick={startQuiz} className='p-0'>
                     <FlagIcon variant="contained" className='grid-icon-button bg-green-500 hover:bg-green-700' />
@@ -142,17 +142,17 @@ const QuizPage = ({quiz}) => {
                       aria-labelledby="modal-modal-title"
                       aria-describedby="modal-modal-description"
                     >
-                      <Box sx={style} className='text-white py-6'>
+                      <Box className='modal-box glass-item'>
                         {
                           right && (
                             <>
                               <InsertEmoticonIcon className='grid-icon-button text-yellow-400'/>
-                              <Typography id="modal-modal-title" variant="h6" component="h2" className='p-4'>
+                              <div className='grid-item-h6'>
                                 You are Right!!. You got one Point. 
-                              </Typography>
-                              <Typography id="modal-modal-title" variant="body2" component="h2" className='p-4'>
+                              </div>
+                              <div className='grid-item-body1'>
                                 Explanation: {questions[qNumber].explanation}
-                              </Typography>
+                              </div>
                             </>
                           )
                         }
@@ -160,12 +160,12 @@ const QuizPage = ({quiz}) => {
                           !right && (
                             <>
                               <SentimentVeryDissatisfiedIcon className='grid-icon-button text-yellow-400'/>
-                              <Typography id="modal-modal-title" variant="h6" component="h2" className='p-4'>
-                              oh oh. Not went well :-
-                              </Typography>
-                              <Typography id="modal-modal-title" variant="body2" component="h2" className='p-4'>
+                              <div className='grid-item-h6'>
+                              oh oh. Not went well :-{'('}
+                              </div>
+                              <div className='grid-item-body1'>
                               Explanation: {questions[qNumber].explanation}
-                              </Typography>
+                              </div>
                             </>
                           )
                         }
@@ -212,10 +212,10 @@ const QuizPage = ({quiz}) => {
                 )
               }
             </div>
-            <div className='h-24 sm:h-0'></div>
-            <div className='h-24 sm:h-0'></div>
-            <div className='h-24 sm:h-0'></div>
-            <div className='h-24 sm:h-0'></div>
+            <div className='grid-placeholder'></div>
+            <div className='grid-placeholder'></div>
+            <div className='grid-placeholder'></div>
+            <div className='grid-placeholder'></div>
           </div>
           <Modal
             open={infoOpen}

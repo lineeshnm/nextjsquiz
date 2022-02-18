@@ -402,12 +402,12 @@ export default function CreateQuiz() {
                         <div className='py-2 flex justify-evenly gap-10 col-span-2'>
                         <Tooltip title="Clear the Form">
                           <IconButton onClick={() => setQuestion(INITIAL_STATE.question)}>
-                            <ClearSharpIcon variant="contained" className='bg-orange-400 hover:bg-red-700 h-12 w-12 md:h-8 md:w-8 sm:h-6 sm:w-6 rounded-full' />
+                            <ClearSharpIcon variant="contained" className='bg-orange-400 hover:bg-red-700 h-6 w-6 lg:h-12 lg:w-12 md:h-8 md:w-8 sm:h-6 sm:w-6 rounded-full' />
                           </IconButton>
                           </Tooltip>
                           <Tooltip title="Add Question">
                           <IconButton onClick={addQuestion}>
-                            <AddCircleSharpIcon variant="contained" className='bg-blue-400 hover:bg-blue-700 h-12 w-12 md:h-8 md:w-8 sm:h-6 sm:w-6 rounded-full' />
+                            <AddCircleSharpIcon variant="contained" className='bg-blue-400 hover:bg-blue-700 h-6 w-6 lg:h-12 lg:w-12 md:h-8 md:w-8 sm:h-6 sm:w-6 rounded-full' />
                           </IconButton>
                           </Tooltip>
                         </div>
@@ -528,10 +528,10 @@ export default function CreateQuiz() {
                       </div>
                       </form>
                   </li>
-                  <li><div className='h-24 sm:h-0'></div></li>
-                  <li><div className='h-24 sm:h-0'></div></li>
-                  <li><div className='h-24 sm:h-0'></div></li>
-                  <li><div className='h-24 sm:h-0'></div></li>
+                  <li><div className='grid-placeholder'></div></li>
+                  <li><div className='grid-placeholder'></div></li>
+                  <li><div className='grid-placeholder'></div></li>
+                  <li><div className='grid-placeholder'></div></li>
                 </ul>
             </>
           )
@@ -549,12 +549,12 @@ export default function CreateQuiz() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className='text-white'>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+        <Box className='modal-box glass-item'>
+          <div className='grid-item-h6'>
             Your Quiz is created
-          </Typography>
-          <p className='text-sm py-6'>URL to Share it with participants: </p>
-          <a className='text-sm' href={`${URL}/quizes/${slug}`} target="_blank" rel="noopener noreferrer">{`${URL}/quizes/${slug}`}.</a>
+          </div>
+          <p className='grid-item-body1 py-2'>URL to Share it with participants: </p>
+          <a className='grid-item-body1' href={`${URL}/quizes/${slug}`} target="_blank" rel="noopener noreferrer">{`${URL}/quizes/${slug}`}.</a>
         </Box>
       </Modal>
     </div>

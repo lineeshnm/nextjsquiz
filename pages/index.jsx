@@ -35,10 +35,10 @@ export default function Home({certs}) {
             <div className="grid-item-body1"><Link href="/createquiz" ><a >Step3: Build a Quiz</a></Link></div>
             <div className="grid-item-body1">Step4: Review and Upload</div>
           </li>
-          <li className='sm:h-0'><div className='grid-placeholder'></div></li>
-          <li className='sm:h-0'><div className='grid-placeholder'></div></li>
-          <li className='sm:h-0'><div className='grid-placeholder'></div></li>
-          <li className='sm:h-0'><div className='grid-placeholder'></div></li>
+          <li className='grid-placeholder'></li>
+          <li className='grid-placeholder'></li>
+          <li className='grid-placeholder'></li>
+          <li className='grid-placeholder'></li>
         </ul>
       </div>
     </>
