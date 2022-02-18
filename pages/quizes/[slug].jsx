@@ -10,7 +10,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
-import DangerousIcon from '@mui/icons-material/Dangerous';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
 const APP_NAME = process.env.APP_NAME
 const URL = process.env.URL
@@ -95,39 +95,43 @@ const QuizPage = ({quiz}) => {
   }, [selectedOption]);
 
   return (
-    <div className='flex-grow px-12 pt-40 w-screen'>
+    <div className='page-banner-container'>
       {
         quiz && quiz.quizName && (
           <>
           
-          <div className="text-center h-full text-4xl font-semibold py-2 glass-item">
+          <div className="page-banner">
             {APP_NAME} - {quiz.quizName ? quiz.quizName : "Loading.."}
           </div>
-          <div className='grid grid-cols-6 grid-rows-5 gap-2 grid-flow-col py-12'>
-            <div className='col-start-1 col-span-1 row-start-1 row-span-5 glass-item'>
-              <div className='text-center text-xl pt-6'>Quiz Details</div>
-              <div className='text-center text-lg py-2'>{quiz.quizName}</div>
-              <div className='h-20 text-center py-2'>
+          <div className='grid-container'>
+            <div className='grid-item'>
+              <div className='grid-item-h4'>Quiz Details</div>
+              <div className='grid-item-h6'>{quiz.quizName}</div>
+              <div className='h-20 lg:h-2-0 md:h-16 sm:h-12 text-center pb-4'>
               <Tooltip title="More details">
-                <IconButton onClick={handleInfoOpen} className='h-16'>
-                  <InfoIcon variant="contained" className='h-16 bg-blue-500 hover:bg-blue-700 rounded-full' />
+                <IconButton onClick={handleInfoOpen} className='p-0'>
+                  <InfoIcon variant="contained" className='grid-icon-button bg-blue-500 hover:bg-blue-700' />
                 </IconButton>
               </Tooltip>
               </div>
-              <div className='text-center text-base py-2'>Start Time: {quiz.startDate}</div>
-              <div className='text-center text-base py-2'>End Time: {quiz.endDate}</div>
-              <div className='text-center text-base py-2'>Timed Game?: {quiz.timedGame.toString()}</div>
-              <div className='text-center text-base py-2'>Live Game?: {quiz.readyToPlay.toString()}</div>
-              <div className='h-20 text-center py-2'>
+              <div className='flex justify-evenly'>
+                <div className='grid-item-body2'>Starts At: {quiz.startDate}</div>
+                <div className='grid-item-body2'>Ends At: {quiz.endDate}</div>
+              </div>
+              <div className='flex justify-evenly'>
+                <div className='grid-item-body2'>Timed Game?: {quiz.timedGame.toString()}</div>
+                <div className='grid-item-body2'>Live Game?: {quiz.readyToPlay.toString()}</div>
+              </div>
+              <div className='h-20 lg:h-2-0 md:h-16 sm:h-12 text-center pb-4' >
                 <Tooltip title="Start the Quiz">
-                  <IconButton onClick={startQuiz}>
-                    <FlagIcon variant="contained" className=' h-20 w-20 rounded-full bg-green-500 hover:bg-green-700 ' />
+                  <IconButton onClick={startQuiz} className='p-0'>
+                    <FlagIcon variant="contained" className='grid-icon-button bg-green-500 hover:bg-green-700' />
                   </IconButton>
                 </Tooltip>   
               </div>
             </div>
-            <div className='col-start-2 col-span-4 row-start-1 row-span-5 glass-item'>
-              <Typography variant="h6" className='text-center py-6'>Questions</Typography>
+            <div className='grid-item'>
+              <div className='grid-item-h4'>Questions</div>
               {
                 questions && questions[qNumber] && (
                   <>
@@ -142,12 +146,12 @@ const QuizPage = ({quiz}) => {
                         {
                           right && (
                             <>
-                              <InsertEmoticonIcon className='h-24 w-24 rounded-full text-yellow-400'/>
+                              <InsertEmoticonIcon className='grid-icon-button text-yellow-400'/>
                               <Typography id="modal-modal-title" variant="h6" component="h2" className='p-4'>
-                              You are Right!!. You got one Point. 
+                                You are Right!!. You got one Point. 
                               </Typography>
                               <Typography id="modal-modal-title" variant="body2" component="h2" className='p-4'>
-                              Explanation: {questions[qNumber].explanation}
+                                Explanation: {questions[qNumber].explanation}
                               </Typography>
                             </>
                           )
@@ -155,7 +159,7 @@ const QuizPage = ({quiz}) => {
                         {
                           !right && (
                             <>
-                              <SentimentVeryDissatisfiedIcon className='h-24 w-24 rounded-full text-yellow-400'/>
+                              <SentimentVeryDissatisfiedIcon className='grid-icon-button text-yellow-400'/>
                               <Typography id="modal-modal-title" variant="h6" component="h2" className='p-4'>
                               oh oh. Not went well :-
                               </Typography>
@@ -172,44 +176,46 @@ const QuizPage = ({quiz}) => {
                 )
               }
             </div>
-            <div className='col-start-6 col-span-1 row-start-1 row-span-5 glass-item'>
-              <Typography variant="h6" className='text-center pt-6'>Points</Typography>
-              <div className='text-center py-6'>
+            {
+              isPlaying && quiz.timedGame && (
+                <div className='grid-item-special'>
+                  <div className="time">
+                    <CountDownTimer duration={30} selectedAnswer={selectedAnswer} isPlaying={isPlaying} setCurrentPoint={setCurrentPoint} />
+                  </div>
+                </div>
+              )
+            }
+            <div className='grid-item'>
+              <div className='grid-item-h4'>Points</div>
+              <div className='grid-item-h6'>
                 <Tooltip title={questions[qNumber] ? questions[qNumber].hint : "null"}>
                   <IconButton onClick={() => {}}>
-                    <LightbulbIcon variant="contained" className=' h-20 w-20 rounded-full text-white hover:text-yellow-400' />
+                    <LightbulbIcon variant="contained" className='grid-icon-button text-white hover:text-yellow-400' />
                   </IconButton>
                 </Tooltip> 
                 {
                   isPlaying ? (
-                  <Typography variant="body1" className='text-center py-6'>Your Points:{points}</Typography>
+                  <div className='grid-item-h6'>Your Points:{points}</div>
                   ) : (
-                  <Typography variant="h2" className='text-center py-6'>Your Points:{points}</Typography>
+                  <div className='grid-item-h2'>Your Points:{points}</div>
                   )
                 }  
                 
               </div>
               {
-                isPlaying && quiz.timedGame && (
-                  <div className="time">
-                    <CountDownTimer duration={30} selectedAnswer={selectedAnswer} isPlaying={isPlaying} setCurrentPoint={setCurrentPoint} />
-                  </div>
-                )
-              }
-              {
                 !flag && (
                   <div className='text-center'>
                     <Tooltip title={"Quiz Stopped / Completed"}>
-                      <DangerousIcon className='h-20 w-20 bg-red-500 text-white hover:text-yellow-400' />
+                      <EmojiEventsIcon className='grid-icon-button bg-blue-500 hover:bg-green-500 text-white hover:text-yellow-400' />
                     </Tooltip>
                   </div>
                 )
               }
             </div>
-            <div className='h-24'></div>
-            <div className='h-24'></div>
-            <div className='h-24'></div>
-            <div className='h-24'></div>
+            <div className='h-24 sm:h-0'></div>
+            <div className='h-24 sm:h-0'></div>
+            <div className='h-24 sm:h-0'></div>
+            <div className='h-24 sm:h-0'></div>
           </div>
           <Modal
             open={infoOpen}

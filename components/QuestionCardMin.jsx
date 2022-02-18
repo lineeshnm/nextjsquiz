@@ -12,7 +12,7 @@ const QuestionCardMin = ({question, index, deleteQuestion}) => {
             <div className='row-span-2'>
                 <Tooltip title="Delete This Question">
                     <IconButton onClick={() => deleteQuestion(question)}>
-                        <DeleteIcon variant="contained" className='bg-orange-500 hover:bg-red-700 rounded-full' />
+                        <DeleteIcon variant="contained" className='bg-orange-500 hover:bg-red-700 h-12 w-12 md:h-8 md:w-8 sm:h-6 sm:w-6 rounded-full' />
                     </IconButton>
                 </Tooltip>
             </div>                                                

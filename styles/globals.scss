@@ -10,15 +10,119 @@
 }
 
 .header-item {
-  @apply md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer tracking-widest drop-shadow-lg;
+  @apply md:float-right mt-2 md:mt-1 align-middle text-white ml-4 md:ml-2 lg:font-semibold cursor-pointer tracking-widest drop-shadow-lg;
 }
 
 .glass-item {
-  @apply text-white bg-white bg-opacity-10 rounded-2xl shadow-5xl border border-opacity-30 border-r-0 border-b-0 backdrop-filter backdrop-blur-sm
+  @apply text-white bg-white bg-opacity-10 rounded-lg shadow-5xl border border-opacity-30 border-r-0 border-b-0 backdrop-filter backdrop-blur-sm
+}
+
+.side-drawer {
+  @apply h-[70%] w-40 text-white bg-white bg-opacity-10 rounded-lg shadow-5xl border border-opacity-30 border-r-0 border-b-0  backdrop-filter backdrop-blur-sm shadow-black fixed top-0 left-0 z-50 transform -translate-x-full 
+}
+
+.side-drawer-content {
+  @apply h-full flex flex-col list-none justify-center px-2
+}
+  // transform: translateX(-100%);
+  // transition: transform 0.3s ease-out;
+.side-drawer.open {
+  @apply transform translate-x-0
+}
+
+.app-name {
+  @apply cursor-pointer font-bold text-4xl text-white drop-shadow-2xl
+}
+
+.side-drawer-link {
+  @apply mx-2 my-0
+}
+
+.side-drawer-a {
+  @apply no-underline text-white hover:text-gray-900 text-lg py-6
+}
+
+.page-banner-container {
+  @apply flex-grow px-12 pt-40 lg:px-12 lg:pt-40 md:px-6 md:pt-28 sm:px-2 sm:pt-16  w-screen
+}
+
+.page-banner {
+  @apply text-center h-full text-4xl lg:text-2xl md:text-xl sm:text-lg font-semibold py-2 glass-item
+}
+
+.footer-container {
+  @apply w-full lg:left-12 lg:right-12 md:left-6 md:right-6 sm:left-2 sm:right-2 lg:top-6 md:top-4 sm:top-2 bottom-6 glass-item
+}
+
+.footer {
+  @apply flex justify-around text-white tracking-widest text-4xl lg:text-2xl md:text-xl sm:text-lg pb-6 lg:pb-6 md:pb-4 sm:pb-2 mt-6 lg:mt-6 md:mt-4 sm:mt-2
+}
+
+.footer-a {
+  @apply flex justify-center text-2xl lg:text-2xl md:text-xl sm:text-lg
+}
+.footer-p {
+  @apply flex justify-center text-2xl lg:text-2xl md:text-xl sm:text-lg
+}
+
+.grid-container {
+  @apply grid grid-cols-6 grid-rows-5 lg:grid-cols-6 lg:grid-rows-5 md:grid-cols-6 md:grid-rows-5 sm:grid-cols-1 sm:grid-rows-3 py-8 lg:py-8 md:py-6 sm:py-2 gap-2 lg:gap-2 md:gap-1 sm:gap-1 grid-flow-col sm:grid-flow-row
+}
+
+.grid-item {
+  @apply col-span-2 row-start-1 row-span-5 lg:col-span-2 lg:row-start-1 lg:row-span-5 md:col-span-2 md:row-start-1 md:row-span-5 sm:col-span-1 sm:row-span-1 glass-item
+}
+
+.grid-item-special {
+  @apply col-span-1 row-start-1 row-span-1 lg:col-span-1 lg:row-start-1 lg:row-span-1 md:col-span-1 md:row-start-1 md:row-span-1 sm:col-span-1 sm:row-span-1 glass-item
+}
+
+.grid-placeholder {
+  @apply h-24 lg:h-24 sm:h-0
+}
+
+.grid-item-h2 {
+  @apply text-center text-4xl lg:text-4xl md:text-2xl sm:text-xl font-semibold tracking-wide py-8 lg:py-8 md:py-6 sm:py-2
+}
+
+.grid-item-h4 {
+  @apply text-center text-2xl lg:text-2xl md:text-xl sm:text-lg font-semibold tracking-wide py-8 lg:py-8 md:py-6 sm:py-2
+}
+
+.grid-item-h6 {
+  @apply text-center text-2xl lg:text-2xl md:text-xl sm:text-lg tracking-wide py-4 lg:py-4 md:py-2 sm:py-1
+}
+
+.quizes {
+  @apply m-6 text-center text-2xl lg:text-2xl md:text-xl sm:text-lg py-4 lg:py-4 md:py-2 sm:py-1
+}
+
+.grid-item-body1 {
+  @apply text-center text-xl lg:text-xl md:text-sm sm:text-xs py-2 lg:py-2 md:py-1 sm:py-1
+}
+
+.grid-item-body2 {
+  @apply text-center text-lg lg:text-lg md:text-sm sm:text-xs py-2 lg:py-2 md:py-1 sm:py-1
+}
+
+.grid-icon-button {
+  @apply h-14 w-14 lg:h-14 lg:w-14 md:h-12 md:w-12 sm:w-8 sm:h-8 rounded-full 
+}
+
+.quiz-question-card {
+  @apply h-96 lg:h-96 md:h-60 sm:h-40 glass-item text-lg lg:text-lg md:text-sm sm:text-xs m-6 p-6 lg:m-6 lg:p-6 md:m-4 md:p-4 sm:m-2 sm:p-2
+}
+
+.question-card-container {
+  @apply flex grid-flow-row h-[40%] justify-center py-3 lg:py-3 md:py-2 sm:py-1 gap-6 lg:gap-6 md:gap-4 sm:gap-2
 }
 
 .quiz-answer-card {
-  @apply w-full align-middle h-full text-center bg-opacity-10 py-12 px-4 cursor-pointer;
+  @apply w-full align-middle h-full text-center bg-opacity-10 py-12 lg:py-12 md:py-8 sm:py-4 px-4 lg:px-4 md:px-2 sm:px-1 cursor-pointer text-lg lg:text-lg md:text-sm sm:text-xs
+}
+
+.button-text {
+  @apply text-xl lg:text-xl md:text-lg sm:text-xs
 }
 
 .value {
@@ -41,17 +145,53 @@
   @apply max-w-sm text-center text-base my-10
 }
 
+.toggle-btn {
+  @apply cursor-pointer justify-center items-center h-8 w-8
+}
+
+.toggle-button {
+  @apply h-10 w-8 bg-transparent border-none cursor-pointer flex flex-col justify-around p-0 box-border 
+}
+
+.toggle-button:focus {
+  @apply outline-none
+}
+
+.toggle-button-line {
+  @apply w-8 h-2 bg-gray-900
+}
+
+
+
+@media screen and (min-width: 759px) {
+  .side-drawer {
+    @apply hidden
+  }
+
+  .toggle-btn {
+    @apply hidden
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .app-name {
+    @apply text-xl drop-shadow-lg
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .toolbar_navigation-items {
+    @apply hidden
+  }
+
+  .app-name {
+    @apply text-xl drop-shadow-lg
+  }
+}
+
+
 .time {
-  text-align: center;
-  background-color: #282c34;
-  // min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(50px + 2vmin);
-  color: white;
-  font-family: 'Jura', sans-serif;
+  @apply text-center bg-gray-900 text-white text-xl justify-center flex flex-col items-center
 }
 
 html,

@@ -32,16 +32,16 @@ const Index = () => {
     }
     
     return (
-        <div className='flex-grow px-12 pt-40 w-screen'>
+        <div className='page-banner-container'>
             {
                 quizes && (
                     <>
-                        <div className="text-center h-full text-4xl font-semibold py-2 glass-item">
+                        <div className="page-banner">
                             {APP_NAME} - List of Quizes
                         </div>
-                        <div className='grid grid-cols-6 grid-rows-5 gap-2 grid-flow-col py-12'>
-                            <div className='col-start-1 col-span-2 row-start-1 row-span-5 overflow-auto glass-item'>
-                                <Typography variant="h6" className='text-center pt-6'>Expired Quizs</Typography>
+                        <div className='grid-container'>
+                            <div className='grid-item'>
+                                <div className='grid-item-h4'>Expired Quizs</div>
                                 { quizes && quizes.map((quiz, index) => {
                                     if (compareDate(quiz.endDate) === -1) {
                                         return(
@@ -50,8 +50,8 @@ const Index = () => {
                                     }
                                 })}
                             </div>
-                            <div className='col-start-3 col-span-2 row-start-1 row-span-5 overflow-auto glass-item'>
-                                <Typography variant="h6" className='text-center pt-6'>Today's Quizes</Typography>
+                            <div className='grid-item'>
+                                <div className='grid-item-h4'>Today's Quizes</div>
                                 { quizes && quizes.map((quiz, index) => {
                                     if (quiz.endDate.split('T')[0] === new Date().toISOString().split('T')[0]) {
                                         return(
@@ -60,8 +60,8 @@ const Index = () => {
                                     }
                                 })}
                             </div>
-                            <div className='col-start-5 col-span-2 row-start-1 row-span-5 overflow-auto glass-item'>
-                                <Typography variant="h6" className='text-center pt-6'>Upcoming Quizes</Typography>
+                            <div className='grid-item'>
+                                <div className='grid-item-h4'>Upcoming Quizes</div>
                                 { quizes && quizes.map((quiz, index) => {
                                     if (compareDate(quiz.endDate) === 1) {
                                         return(
@@ -70,10 +70,10 @@ const Index = () => {
                                     }
                                 })}
                             </div>
-                            <div className='h-24'></div>
-                            <div className='h-24'></div>
-                            <div className='h-24'></div>
-                            <div className='h-24'></div>
+                            <div className='h-24 sm:h-0'></div>
+                            <div className='h-24 sm:h-0'></div>
+                            <div className='h-24 sm:h-0'></div>
+                            <div className='h-24 sm:h-0'></div>
                         </div>
                     </>
                 )

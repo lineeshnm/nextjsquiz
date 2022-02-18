@@ -161,7 +161,7 @@ export default function AdminRenew({certs, pageName}) {
       }
       <div className='h-screen w-full relative overflow-hidden flex justify-center py-6'>
         <Background />
-        <Card sx={{ minWidth: 275 }} className='px-12 bg-white bg-opacity-10 rounded-2xl text-white shadow-5xl relative z-2 border border-opacity-30 border-r-0 border-b-0 backdrop-filter backdrop-blur-sm' >
+        <Card sx={{ minWidth: 275 }} className='px-12 glass-item' >
         <Grid container spacing={1} className='py-8 text-white'>
         <Grid item xs={1} >
           Server Name

@@ -250,18 +250,18 @@ export default function CreateQuiz() {
   }, [errors])  
 
   return (
-    <div className='flex-grow px-12 pt-40 w-screen'>
-      <div className="text-center h-full text-4xl font-semibold py-2 glass-item">
+    <div className='page-banner-container'>
+      <div className="page-banner">
         {APP_NAME} - Create Quiz
       </div>
       {
           isAuth() && (
             <>
-                <ul className='grid grid-cols-6 grid-rows-5 gap-2 grid-flow-col py-12'>
-                  <li className='col-start-1 col-span-2 row-start-1 row-span-5 glass-item'>
+                <ul className='grid-container'>
+                  <li className='grid-item'>
                     <form>
-                      <Typography variant="h6" className='text-center pt-6'>Stage 1: Add Questions</Typography>
-                      <Typography variant="body1" className='text-center py-2'>{questions.length} Questions added</Typography>
+                      <div className='grid-item-h4'>Stage 1: Add Questions</div>
+                      <div className='grid-item-h6'>{questions.length} Questions added</div>
                       <div className='grid grid-cols-2 grid-rows-5 gap-2 '>
                         <div className='py-2 flex gap-2'>
                           <Typography className='px-3'>Q</Typography>
@@ -402,29 +402,29 @@ export default function CreateQuiz() {
                         <div className='py-2 flex justify-evenly gap-10 col-span-2'>
                         <Tooltip title="Clear the Form">
                           <IconButton onClick={() => setQuestion(INITIAL_STATE.question)}>
-                            <ClearSharpIcon variant="contained" className='bg-orange-400 hover:bg-red-700 h-12 w-12 rounded-full' />
+                            <ClearSharpIcon variant="contained" className='bg-orange-400 hover:bg-red-700 h-12 w-12 md:h-8 md:w-8 sm:h-6 sm:w-6 rounded-full' />
                           </IconButton>
                           </Tooltip>
                           <Tooltip title="Add Question">
                           <IconButton onClick={addQuestion}>
-                            <AddCircleSharpIcon variant="contained" className='bg-blue-400 hover:bg-blue-700 h-12 w-12 rounded-full' />
+                            <AddCircleSharpIcon variant="contained" className='bg-blue-400 hover:bg-blue-700 h-12 w-12 md:h-8 md:w-8 sm:h-6 sm:w-6 rounded-full' />
                           </IconButton>
                           </Tooltip>
                         </div>
                       </div>
                       </form>
                   </li>
-                  <li className='col-start-3 col-span-2 row-start-1 row-span-5 glass-item'>
-                    <Typography variant="h6" className='text-center pt-6'>Stage 2: Review Questions</Typography>
+                  <li className='grid-item'>
+                    <div className='grid-item-h4'>Stage 2: Review Questions</div>
                     <div className='grid grid-cols-1 grid-row-4 gap-2 grid-flow-row p-2 h-26-r overflow-y-auto'>
                       {questions.reverse().map((question, index) => (
                         <QuestionCardMin key={index} question={question} index={index} deleteQuestion={deleteQuestion}/>
                       ))}
                     </div>
                   </li>
-                  <li className='col-start-5 col-span-2 row-start-1 row-span-5 glass-item'>
+                  <li className='grid-item'>
                       <form>
-                      <Typography variant="h6" className='text-center pt-6'>Stage 3: Quiz Controls</Typography>
+                      <div className='grid-item-h4'>Stage 3: Quiz Controls</div>
                       <div className='pr-2 flex-col'>
                         <div className='py-2 flex gap-4'>
                           <Typography className='px-2'>Quiz Name</Typography>
@@ -528,10 +528,10 @@ export default function CreateQuiz() {
                       </div>
                       </form>
                   </li>
-                  <li><div className='h-24'></div></li>
-                  <li><div className='h-24'></div></li>
-                  <li><div className='h-24'></div></li>
-                  <li><div className='h-24'></div></li>
+                  <li><div className='h-24 sm:h-0'></div></li>
+                  <li><div className='h-24 sm:h-0'></div></li>
+                  <li><div className='h-24 sm:h-0'></div></li>
+                  <li><div className='h-24 sm:h-0'></div></li>
                 </ul>
             </>
           )
