@@ -18,6 +18,7 @@ export default function Home({certs}) {
             <div className='grid-item-h6'>Next JS based Quiz App</div>
             <div className='grid-item-body1'>A platform to create and share your Quizes</div>
             <div className='grid-item-body1'>Intented to use in Schools, Collages, Local Clubs, International Clubs</div>
+            <div className='grid-item-h6'><Link href="/quizes" ><a><div className='animate-bounce'>👉 </div>Go to Quizes</a></Link></div>
           </li>
           <li className='grid-item'>
             <div className='grid-item-h4'>Features</div>

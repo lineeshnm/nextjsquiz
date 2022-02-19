@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { QuestionCard, CountDownTimer } from '../../components';
-import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import FlagIcon from '@mui/icons-material/Flag';
 import Tooltip from '@mui/material/Tooltip';
@@ -14,18 +13,6 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
 const APP_NAME = process.env.APP_NAME
 const URL = process.env.URL
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 600,
-  bgcolor: 'glass-item',
-  border: '1px solid #fff',
-  boxShadow: 24,
-  p: 4,
-};
 
 const QuizPage = ({quiz}) => {
   const [questions, setQuestions] = useState([]);
@@ -110,7 +97,7 @@ const QuizPage = ({quiz}) => {
               <div className='h-12 lg:h-20 md:h-16 sm:h-12 text-center pb-4'>
               <Tooltip title="More details">
                 <IconButton onClick={handleInfoOpen} className='p-0'>
-                  <InfoIcon variant="contained" className='grid-icon-button bg-blue-500 hover:bg-blue-700' />
+                <div className='animate-bounce'>👉{' '}</div><InfoIcon variant="contained" className='grid-icon-button bg-blue-500 hover:bg-blue-700' />
                 </IconButton>
               </Tooltip>
               </div>
@@ -125,7 +112,7 @@ const QuizPage = ({quiz}) => {
               <div className='h-12 lg:h-20 md:h-16 sm:h-12 text-center pb-4' >
                 <Tooltip title="Start the Quiz">
                   <IconButton onClick={startQuiz} className='p-0'>
-                    <FlagIcon variant="contained" className='grid-icon-button bg-green-500 hover:bg-green-700' />
+                  <div className='animate-bounce'>👉{' '}</div><FlagIcon variant="contained" className='grid-icon-button bg-green-500 hover:bg-green-700' />
                   </IconButton>
                 </Tooltip>   
               </div>
@@ -190,7 +177,7 @@ const QuizPage = ({quiz}) => {
               <div className='grid-item-h6'>
                 <Tooltip title={questions[qNumber] ? questions[qNumber].hint : "null"}>
                   <IconButton onClick={() => {}}>
-                    <LightbulbIcon variant="contained" className='grid-icon-button text-white hover:text-yellow-400' />
+                  <div className='animate-bounce'>👉{' '}</div><LightbulbIcon variant="contained" className='grid-icon-button text-white hover:text-yellow-400' />
                   </IconButton>
                 </Tooltip> 
                 {
@@ -223,13 +210,13 @@ const QuizPage = ({quiz}) => {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <Box sx={style} className='text-white py-6'>
-              <Typography id="modal-modal-title" variant="h6" component="h2" className='p-4'>
+            <Box className='modal-box glass-item'>
+              <div className='grid-item-h6'>
               {quiz.quizName}
-              </Typography>
-              <Typography id="modal-modal-title" variant="body2" component="h2" className='p-4'>
+              </div>
+              <div className='grid-item-body1'>
               {quiz.description}
-              </Typography>
+              </div>
             </Box>
           </Modal>
           </>
