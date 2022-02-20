@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { QuestionCard, CountDownTimer } from '../../components';
 import IconButton from '@mui/material/IconButton';
 import FlagIcon from '@mui/icons-material/Flag';
@@ -26,14 +26,16 @@ const QuizPage = ({quiz}) => {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [flag, setFlag] = useState(false);
+  const answerRef = useRef()
   const handleInfoOpen = () => setInfoOpen(true);
   const handleInfoClose = () => setInfoOpen(false);
   const handleConfirmOpen = () => setConfirmOpen(true);
   const handleConfirmClose = () => {
     setRight(null)
     setConfirmOpen(false)
-    console.log({questions})
-    console.log({qNumber})
+    answerRef.current?.scrollIntoView({ behavior: 'smooth' })
+    // console.log({questions})
+    // console.log({qNumber})
     if (qNumber + 2 > questions.length) {
       setQNumber(qNumber + 1)
       stopQuiz()
@@ -50,6 +52,7 @@ const QuizPage = ({quiz}) => {
     setQNumber(0)
     setPoints(0)
     setIsPlaying(true)
+    answerRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
   const stopQuiz = () => {
@@ -187,7 +190,7 @@ const QuizPage = ({quiz}) => {
               )
             }
             <div className='grid-item'>
-              <div className='grid-item-h4'>Points</div>
+              <div ref={answerRef} className='grid-item-h4'>Points</div>
               <div className='grid-item-h6'>
                 <Tooltip title={questions[qNumber] ? questions[qNumber].hint : "null"}>
                   <IconButton className='p-0 gap-3' onClick={() => {}}>
