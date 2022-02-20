@@ -50,12 +50,16 @@
   @apply text-center h-full text-lg lg:text-2xl md:text-xl sm:text-lg font-semibold py-2 glass-item
 }
 
+.button {
+  @apply text-right m-2 p-2
+}
+
 .footer-container {
-  @apply w-full left-2 right-2 lg:left-12 top-2 lg:right-12 md:left-6 md:right-6 sm:left-2 sm:right-2 lg:top-6 md:top-4 sm:top-2 bottom-2 glass-item
+  @apply w-full left-2 right-2 lg:left-12 top-2 lg:right-12 md:left-6 md:right-6 sm:left-2 sm:right-2 lg:top-6 md:top-4 sm:top-2 bottom-2 glass-item gap-2 sm:gap-2 md:gap-4 lg:gap-6
 }
 
 .footer {
-  @apply flex justify-around text-white tracking-widest text-xs lg:text-2xl md:text-xl sm:text-lg pb-2 lg:pb-6 md:pb-4 sm:pb-2 mt-2 lg:mt-6 md:mt-4 sm:mt-2
+  @apply flex justify-around text-white tracking-widest text-xs lg:text-2xl md:text-xl sm:text-lg m-2 p-2 sm:m-2 sm:p-2 md:p-4 md:m-4 lg:p-6 lg:m-6
 }
 
 .footer-a {

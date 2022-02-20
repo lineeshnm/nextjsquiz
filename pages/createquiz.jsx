@@ -555,6 +555,11 @@ export default function CreateQuiz() {
           </div>
           <p className='grid-item-body1 py-2'>URL to Share it with participants: </p>
           <a className='grid-item-body1' href={`${URL}/quizes/${slug}`} target="_blank" rel="noopener noreferrer">{`${URL}/quizes/${slug}`}.</a>
+          <div key="upload" className='button'>
+            <Button variant="contained" component="span" className='bg-blue-400 button-text' onClick={handleModalClose}>
+              Dismiss
+            </Button>
+          </div>
         </Box>
       </Modal>
     </div>

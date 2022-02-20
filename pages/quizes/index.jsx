@@ -41,16 +41,6 @@ const Index = () => {
                         </div>
                         <div className='grid-container'>
                             <div className='grid-item'>
-                                <div className='grid-item-h4'>Expired Quizs</div>
-                                { quizes && quizes.map((quiz, index) => {
-                                    if (compareDate(quiz.endDate) === -1) {
-                                        return(
-                                            <QuizLink key={index} quiz={quiz} />
-                                        )
-                                    }
-                                })}
-                            </div>
-                            <div className='grid-item'>
                                 <div className='grid-item-h4'>Today's Quizes</div>
                                 { quizes && quizes.map((quiz, index) => {
                                     if (quiz.endDate.split('T')[0] === new Date().toISOString().split('T')[0]) {
@@ -64,6 +54,16 @@ const Index = () => {
                                 <div className='grid-item-h4'>Upcoming Quizes</div>
                                 { quizes && quizes.map((quiz, index) => {
                                     if (compareDate(quiz.endDate) === 1) {
+                                        return(
+                                            <QuizLink key={index} quiz={quiz} />
+                                        )
+                                    }
+                                })}
+                            </div>
+                            <div className='grid-item'>
+                                <div className='grid-item-h4'>Expired Quizs</div>
+                                { quizes && quizes.map((quiz, index) => {
+                                    if (compareDate(quiz.endDate) === -1) {
                                         return(
                                             <QuizLink key={index} quiz={quiz} />
                                         )

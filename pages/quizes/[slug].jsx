@@ -10,6 +10,7 @@ import Modal from '@mui/material/Modal';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import Button from '@mui/material/Button';
 
 const APP_NAME = process.env.APP_NAME
 const URL = process.env.URL
@@ -96,8 +97,8 @@ const QuizPage = ({quiz}) => {
               <div className='grid-item-h6'>{quiz.quizName}</div>
               <div className='h-12 lg:h-20 md:h-16 sm:h-12 text-center pb-4'>
               <Tooltip title="More details">
-                <IconButton onClick={handleInfoOpen} className='p-0'>
-                <div className='animate-bounce'>👉{' '}</div><InfoIcon variant="contained" className='grid-icon-button bg-blue-500 hover:bg-blue-700' />
+                <IconButton onClick={handleInfoOpen} className='p-0 gap-3'>
+                <div className='animate-bounce text-yellow-500'>👉{' '}</div><div className='text-white grid-item-body2'>More ... </div><InfoIcon variant="contained" className='grid-icon-button bg-blue-500 hover:bg-blue-700' />
                 </IconButton>
               </Tooltip>
               </div>
@@ -111,14 +112,17 @@ const QuizPage = ({quiz}) => {
               </div>
               <div className='h-12 lg:h-20 md:h-16 sm:h-12 text-center pb-4' >
                 <Tooltip title="Start the Quiz">
-                  <IconButton onClick={startQuiz} className='p-0'>
-                  <div className='animate-bounce'>👉{' '}</div><FlagIcon variant="contained" className='grid-icon-button bg-green-500 hover:bg-green-700' />
+                  <IconButton onClick={startQuiz} className='p-0 gap-3'>
+                  <div className='animate-bounce text-yellow-500'>👉{' '}</div><div className='text-white grid-item-body2'>Start {'  '}</div><FlagIcon variant="contained" className='grid-icon-button bg-green-500 hover:bg-green-700' />
                   </IconButton>
                 </Tooltip>   
               </div>
             </div>
             <div className='grid-item'>
               <div className='grid-item-h4'>Questions</div>
+              {
+                isPlaying && quiz.timedGame && (<div className='grid-item-h6'>Check for Timer</div>)
+              }
               {
                 questions && questions[qNumber] && (
                   <>
@@ -135,10 +139,15 @@ const QuizPage = ({quiz}) => {
                             <>
                               <InsertEmoticonIcon className='grid-icon-button text-yellow-400'/>
                               <div className='grid-item-h6'>
-                                You are Right!!. You got one Point. 
+                                You are Right!!. You got some Point. 
                               </div>
                               <div className='grid-item-body1'>
                                 Explanation: {questions[qNumber].explanation}
+                              </div>
+                              <div key="upload" className='button'>
+                                <Button variant="contained" component="span" className='bg-blue-400 button-text' onClick={handleConfirmClose}>
+                                  Dismiss
+                                </Button>
                               </div>
                             </>
                           )
@@ -152,6 +161,11 @@ const QuizPage = ({quiz}) => {
                               </div>
                               <div className='grid-item-body1'>
                               Explanation: {questions[qNumber].explanation}
+                              </div>
+                              <div key="upload" className='button'>
+                                <Button variant="contained" component="span" className='bg-blue-400 button-text' onClick={handleConfirmClose}>
+                                  Dismiss
+                                </Button>
                               </div>
                             </>
                           )
@@ -176,15 +190,15 @@ const QuizPage = ({quiz}) => {
               <div className='grid-item-h4'>Points</div>
               <div className='grid-item-h6'>
                 <Tooltip title={questions[qNumber] ? questions[qNumber].hint : "null"}>
-                  <IconButton onClick={() => {}}>
-                  <div className='animate-bounce'>👉{' '}</div><LightbulbIcon variant="contained" className='grid-icon-button text-white hover:text-yellow-400' />
+                  <IconButton className='p-0 gap-3' onClick={() => {}}>
+                  <div className='animate-bounce text-yellow-500'>👉{' '}</div><div className='text-white'>Hint</div><LightbulbIcon variant="contained" className='grid-icon-button text-white hover:text-yellow-400' />
                   </IconButton>
                 </Tooltip> 
                 {
                   isPlaying ? (
-                  <div className='grid-item-h6'>Your Points:{points}</div>
+                  <div className='grid-item-h6'>Your Points: {points}</div>
                   ) : (
-                  <div className='grid-item-h2'>Your Points:{points}</div>
+                  <div className='grid-item-h2'>Your Points: {points}</div>
                   )
                 }  
                 
@@ -216,6 +230,11 @@ const QuizPage = ({quiz}) => {
               </div>
               <div className='grid-item-body1'>
               {quiz.description}
+              </div>
+              <div key="upload" className='button'>
+                <Button variant="contained" component="span" className='bg-blue-400 button-text' onClick={handleInfoClose}>
+                  Dismiss
+                </Button>
               </div>
             </Box>
           </Modal>
